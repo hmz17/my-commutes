@@ -1,0 +1,13 @@
+{
+  "name": "travel-dashboard",
+  "version": "1.0.0",
+  "description": "Real-time travel time dashboard using Google Maps Directions API",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "4.21.2",
+    "dotenv": "16.4.7"
+  }
+}
