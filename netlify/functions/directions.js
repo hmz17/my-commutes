@@ -1,4 +1,27 @@
+const rateLimit = {};
+const MAX_REQUESTS = 60; // max requests per IP per window
+const WINDOW_MS = 60 * 1000; // 1 minute window
+
+function isRateLimited(ip) {
+  const now = Date.now();
+  if (!rateLimit[ip] || now - rateLimit[ip].start > WINDOW_MS) {
+    rateLimit[ip] = { start: now, count: 1 };
+    return false;
+  }
+  rateLimit[ip].count++;
+  return rateLimit[ip].count > MAX_REQUESTS;
+}
+
 exports.handler = async (event) => {
+  const ip = event.headers['x-forwarded-for'] || event.headers['client-ip'] || 'unknown';
+
+  if (isRateLimited(ip)) {
+    return {
+      statusCode: 429,
+      body: JSON.stringify({ error: 'Too many requests. Try again later.' })
+    };
+  }
+
   const { origin, destination, mode } = event.queryStringParameters || {};
   const apiKey = process.env.GOOGLE_MAPS_API_KEY;
 

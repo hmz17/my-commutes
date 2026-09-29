@@ -1,0 +1,972 @@
+{
+  "meta": {
+    "source": "NJ Transit Official GTFS",
+    "generated": "2026-09-16",
+    "valid_through": "2027-03",
+    "schedule": "weekday_only"
+  },
+  "stops": {
+    "to_ny_167t": {
+      "id": "422",
+      "name": "TEANECK RD AT OAKDENE AVE",
+      "lat": 40.874649,
+      "lon": -74.01232
+    },
+    "to_ny_167q": {
+      "id": "335",
+      "name": "DEGRAW AVE AT MORNINGSIDE TER",
+      "lat": 40.873489,
+      "lon": -74.01626
+    },
+    "from_ny_167t": {
+      "id": "379",
+      "name": "TEANECK RD AT PUFFIN WAY",
+      "lat": 40.874728,
+      "lon": -74.012171
+    },
+    "from_ny_167q": {
+      "id": "341",
+      "name": "DEGRAW AVE AT WOODBINE ST",
+      "lat": 40.873939,
+      "lon": -74.017063
+    },
+    "pabt": {
+      "id": "43274",
+      "name": "PORT AUTHORITY BUS TERMINAL",
+      "lat": 40.756367,
+      "lon": -73.990753
+    }
+  },
+  "to_ny": [
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "05:00",
+      "arrives_pabt": "05:23",
+      "travel_time_min": 22,
+      "trip_id": "10174"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "05:15",
+      "arrives_pabt": "05:38",
+      "travel_time_min": 22,
+      "trip_id": "10186"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "05:30",
+      "arrives_pabt": "05:53",
+      "travel_time_min": 22,
+      "trip_id": "10187"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "05:45",
+      "arrives_pabt": "06:09",
+      "travel_time_min": 23,
+      "trip_id": "10188"
+    },
+    {
+      "variant": "167Q-RP",
+      "headsign": "167Q NEW YORK QUEEN ANNE RIDGEFIELD PK",
+      "at_my_stop": "05:59",
+      "arrives_pabt": "06:30",
+      "travel_time_min": 30,
+      "trip_id": "10155"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "06:00",
+      "arrives_pabt": "06:26",
+      "travel_time_min": 25,
+      "trip_id": "10189"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "06:14",
+      "arrives_pabt": "06:40",
+      "travel_time_min": 25,
+      "trip_id": "10190"
+    },
+    {
+      "variant": "167Q-RP",
+      "headsign": "167Q NEW YORK QUEEN ANNE RIDGEFIELD PK",
+      "at_my_stop": "06:20",
+      "arrives_pabt": "06:51",
+      "travel_time_min": 30,
+      "trip_id": "10156"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "06:27",
+      "arrives_pabt": "06:53",
+      "travel_time_min": 25,
+      "trip_id": "10175"
+    },
+    {
+      "variant": "167Q-EXP",
+      "headsign": "167Q NEW YORK I-95 EXPRESS",
+      "at_my_stop": "06:40",
+      "arrives_pabt": "07:09",
+      "travel_time_min": 28,
+      "trip_id": "10166"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "06:40",
+      "arrives_pabt": "07:06",
+      "travel_time_min": 25,
+      "trip_id": "10191"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "06:51",
+      "arrives_pabt": "07:17",
+      "travel_time_min": 25,
+      "trip_id": "10176"
+    },
+    {
+      "variant": "167Q-EXP",
+      "headsign": "167Q NEW YORK I-95 EXPRESS",
+      "at_my_stop": "07:00",
+      "arrives_pabt": "07:29",
+      "travel_time_min": 28,
+      "trip_id": "10167"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "07:01",
+      "arrives_pabt": "07:27",
+      "travel_time_min": 25,
+      "trip_id": "10192"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "07:11",
+      "arrives_pabt": "07:37",
+      "travel_time_min": 25,
+      "trip_id": "10177"
+    },
+    {
+      "variant": "167Q-EXP",
+      "headsign": "167Q NEW YORK I-95 EXPRESS",
+      "at_my_stop": "07:20",
+      "arrives_pabt": "07:49",
+      "travel_time_min": 28,
+      "trip_id": "10169"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "07:21",
+      "arrives_pabt": "07:47",
+      "travel_time_min": 25,
+      "trip_id": "10178"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "07:31",
+      "arrives_pabt": "07:57",
+      "travel_time_min": 25,
+      "trip_id": "10179"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "07:39",
+      "arrives_pabt": "08:05",
+      "travel_time_min": 25,
+      "trip_id": "10180"
+    },
+    {
+      "variant": "167Q-EXP",
+      "headsign": "167Q NEW YORK I-95 EXPRESS",
+      "at_my_stop": "07:40",
+      "arrives_pabt": "08:09",
+      "travel_time_min": 28,
+      "trip_id": "10168"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "07:46",
+      "arrives_pabt": "08:12",
+      "travel_time_min": 25,
+      "trip_id": "10193"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "07:53",
+      "arrives_pabt": "08:19",
+      "travel_time_min": 25,
+      "trip_id": "10185"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "08:00",
+      "arrives_pabt": "08:26",
+      "travel_time_min": 25,
+      "trip_id": "10181"
+    },
+    {
+      "variant": "167Q-EXP",
+      "headsign": "167Q NEW YORK I-95 EXPRESS",
+      "at_my_stop": "08:03",
+      "arrives_pabt": "08:32",
+      "travel_time_min": 28,
+      "trip_id": "10170"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "08:07",
+      "arrives_pabt": "08:33",
+      "travel_time_min": 25,
+      "trip_id": "10182"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "08:14",
+      "arrives_pabt": "08:40",
+      "travel_time_min": 25,
+      "trip_id": "10183"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "08:21",
+      "arrives_pabt": "08:47",
+      "travel_time_min": 25,
+      "trip_id": "10194"
+    },
+    {
+      "variant": "167Q-EXP",
+      "headsign": "167Q NEW YORK I-95 EXPRESS",
+      "at_my_stop": "08:29",
+      "arrives_pabt": "08:58",
+      "travel_time_min": 28,
+      "trip_id": "10171"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "08:29",
+      "arrives_pabt": "08:55",
+      "travel_time_min": 25,
+      "trip_id": "10195"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "08:39",
+      "arrives_pabt": "09:08",
+      "travel_time_min": 28,
+      "trip_id": "10158"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "08:49",
+      "arrives_pabt": "09:18",
+      "travel_time_min": 28,
+      "trip_id": "10164"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "08:59",
+      "arrives_pabt": "09:26",
+      "travel_time_min": 26,
+      "trip_id": "10159"
+    },
+    {
+      "variant": "167Q-RP",
+      "headsign": "167Q NEW YORK QUEEN ANNE RIDGEFIELD PK",
+      "at_my_stop": "08:59",
+      "arrives_pabt": "09:32",
+      "travel_time_min": 32,
+      "trip_id": "10172"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "09:09",
+      "arrives_pabt": "09:34",
+      "travel_time_min": 24,
+      "trip_id": "10184"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "09:20",
+      "arrives_pabt": "09:45",
+      "travel_time_min": 24,
+      "trip_id": "10160"
+    },
+    {
+      "variant": "167Q-RP",
+      "headsign": "167Q NEW YORK QUEEN ANNE RIDGEFIELD PK",
+      "at_my_stop": "09:28",
+      "arrives_pabt": "10:00",
+      "travel_time_min": 32,
+      "trip_id": "10173"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "09:35",
+      "arrives_pabt": "10:00",
+      "travel_time_min": 24,
+      "trip_id": "10161"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "09:55",
+      "arrives_pabt": "10:20",
+      "travel_time_min": 24,
+      "trip_id": "10165"
+    },
+    {
+      "variant": "167Q-RP",
+      "headsign": "167Q NEW YORK QUEEN ANNE RIDGEFIELD PK",
+      "at_my_stop": "09:58",
+      "arrives_pabt": "10:30",
+      "travel_time_min": 32,
+      "trip_id": "10140"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "10:15",
+      "arrives_pabt": "10:40",
+      "travel_time_min": 24,
+      "trip_id": "10162"
+    },
+    {
+      "variant": "167Q-RP",
+      "headsign": "167Q NEW YORK QUEEN ANNE RIDGEFIELD PK",
+      "at_my_stop": "10:28",
+      "arrives_pabt": "11:00",
+      "travel_time_min": 32,
+      "trip_id": "10157"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "10:35",
+      "arrives_pabt": "11:00",
+      "travel_time_min": 24,
+      "trip_id": "10163"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "10:55",
+      "arrives_pabt": "11:20",
+      "travel_time_min": 24,
+      "trip_id": "10197"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "11:15",
+      "arrives_pabt": "11:40",
+      "travel_time_min": 24,
+      "trip_id": "10150"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "11:35",
+      "arrives_pabt": "12:00",
+      "travel_time_min": 24,
+      "trip_id": "10141"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "11:55",
+      "arrives_pabt": "12:20",
+      "travel_time_min": 24,
+      "trip_id": "10151"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "12:15",
+      "arrives_pabt": "12:40",
+      "travel_time_min": 24,
+      "trip_id": "10152"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "12:35",
+      "arrives_pabt": "13:00",
+      "travel_time_min": 24,
+      "trip_id": "10149"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "12:55",
+      "arrives_pabt": "13:20",
+      "travel_time_min": 24,
+      "trip_id": "10196"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "13:55",
+      "arrives_pabt": "14:20",
+      "travel_time_min": 24,
+      "trip_id": "10153"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "14:55",
+      "arrives_pabt": "15:26",
+      "travel_time_min": 30,
+      "trip_id": "10198"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "15:57",
+      "arrives_pabt": "16:28",
+      "travel_time_min": 30,
+      "trip_id": "10154"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "16:47",
+      "arrives_pabt": "17:23",
+      "travel_time_min": 35,
+      "trip_id": "10143"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "17:27",
+      "arrives_pabt": "18:03",
+      "travel_time_min": 35,
+      "trip_id": "10199"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "18:07",
+      "arrives_pabt": "18:34",
+      "travel_time_min": 26,
+      "trip_id": "10147"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "19:03",
+      "arrives_pabt": "19:29",
+      "travel_time_min": 25,
+      "trip_id": "10144"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "20:03",
+      "arrives_pabt": "20:29",
+      "travel_time_min": 25,
+      "trip_id": "10145"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "21:02",
+      "arrives_pabt": "21:25",
+      "travel_time_min": 22,
+      "trip_id": "10148"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "21:59",
+      "arrives_pabt": "22:22",
+      "travel_time_min": 22,
+      "trip_id": "10146"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T NEW YORK I-95 EXPRESS",
+      "at_my_stop": "22:59",
+      "arrives_pabt": "23:22",
+      "travel_time_min": 22,
+      "trip_id": "10142"
+    }
+  ],
+  "from_ny": [
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "07:00",
+      "at_my_stop": "07:20",
+      "travel_time_min": 20,
+      "trip_id": "10245"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "07:30",
+      "at_my_stop": "07:50",
+      "travel_time_min": 20,
+      "trip_id": "10251"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "08:00",
+      "at_my_stop": "08:20",
+      "travel_time_min": 20,
+      "trip_id": "10252"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD DUMONT",
+      "departs_pabt": "08:30",
+      "at_my_stop": "08:50",
+      "travel_time_min": 20,
+      "trip_id": "10265"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "09:45",
+      "at_my_stop": "10:04",
+      "travel_time_min": 19,
+      "trip_id": "10253"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "10:45",
+      "at_my_stop": "11:04",
+      "travel_time_min": 19,
+      "trip_id": "10254"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "11:45",
+      "at_my_stop": "12:04",
+      "travel_time_min": 19,
+      "trip_id": "10255"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "12:35",
+      "at_my_stop": "12:54",
+      "travel_time_min": 19,
+      "trip_id": "10256"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "12:55",
+      "at_my_stop": "13:14",
+      "travel_time_min": 19,
+      "trip_id": "10257"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD DUMONT",
+      "departs_pabt": "13:30",
+      "at_my_stop": "13:49",
+      "travel_time_min": 19,
+      "trip_id": "10262"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "13:50",
+      "at_my_stop": "14:09",
+      "travel_time_min": 19,
+      "trip_id": "10246"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "14:10",
+      "at_my_stop": "14:29",
+      "travel_time_min": 19,
+      "trip_id": "10247"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD DUMONT",
+      "departs_pabt": "14:30",
+      "at_my_stop": "14:50",
+      "travel_time_min": 20,
+      "trip_id": "10273"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "14:50",
+      "at_my_stop": "15:10",
+      "travel_time_min": 20,
+      "trip_id": "10274"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "15:10",
+      "at_my_stop": "15:30",
+      "travel_time_min": 20,
+      "trip_id": "10275"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "15:30",
+      "at_my_stop": "15:52",
+      "travel_time_min": 22,
+      "trip_id": "10220"
+    },
+    {
+      "variant": "167Q",
+      "headsign": "167Q TEANECK QUEEN ANNE RD I-95 EXPRESS",
+      "departs_pabt": "15:30",
+      "at_my_stop": "15:54",
+      "travel_time_min": 24,
+      "trip_id": "10276"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "15:45",
+      "at_my_stop": "16:07",
+      "travel_time_min": 22,
+      "trip_id": "10221"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "16:00",
+      "at_my_stop": "16:22",
+      "travel_time_min": 22,
+      "trip_id": "10223"
+    },
+    {
+      "variant": "167Q",
+      "headsign": "167Q TEANECK QUEEN ANNE RD I-95 EXPRESS",
+      "departs_pabt": "16:00",
+      "at_my_stop": "16:24",
+      "travel_time_min": 24,
+      "trip_id": "10204"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "16:15",
+      "at_my_stop": "16:37",
+      "travel_time_min": 22,
+      "trip_id": "10224"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "16:30",
+      "at_my_stop": "16:52",
+      "travel_time_min": 22,
+      "trip_id": "10222"
+    },
+    {
+      "variant": "167Q",
+      "headsign": "167Q TEANECK QUEEN ANNE RD I-95 EXPRESS",
+      "departs_pabt": "16:30",
+      "at_my_stop": "16:54",
+      "travel_time_min": 24,
+      "trip_id": "10202"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "16:42",
+      "at_my_stop": "17:04",
+      "travel_time_min": 22,
+      "trip_id": "10206"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "16:54",
+      "at_my_stop": "17:16",
+      "travel_time_min": 22,
+      "trip_id": "10207"
+    },
+    {
+      "variant": "167Q",
+      "headsign": "167Q TEANECK QUEEN ANNE RD I-95 EXPRESS",
+      "departs_pabt": "17:00",
+      "at_my_stop": "17:24",
+      "travel_time_min": 24,
+      "trip_id": "10200"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "17:06",
+      "at_my_stop": "17:28",
+      "travel_time_min": 22,
+      "trip_id": "10208"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "17:15",
+      "at_my_stop": "17:37",
+      "travel_time_min": 22,
+      "trip_id": "10209"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "17:24",
+      "at_my_stop": "17:46",
+      "travel_time_min": 22,
+      "trip_id": "10210"
+    },
+    {
+      "variant": "167Q",
+      "headsign": "167Q TEANECK QUEEN ANNE RD I-95 EXPRESS",
+      "departs_pabt": "17:30",
+      "at_my_stop": "17:54",
+      "travel_time_min": 24,
+      "trip_id": "10205"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "17:32",
+      "at_my_stop": "17:54",
+      "travel_time_min": 22,
+      "trip_id": "10211"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "17:40",
+      "at_my_stop": "18:02",
+      "travel_time_min": 22,
+      "trip_id": "10218"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "17:48",
+      "at_my_stop": "18:10",
+      "travel_time_min": 22,
+      "trip_id": "10219"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "17:57",
+      "at_my_stop": "18:19",
+      "travel_time_min": 22,
+      "trip_id": "10212"
+    },
+    {
+      "variant": "167Q",
+      "headsign": "167Q TEANECK QUEEN ANNE RD I-95 EXPRESS",
+      "departs_pabt": "18:00",
+      "at_my_stop": "18:23",
+      "travel_time_min": 23,
+      "trip_id": "10203"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "18:07",
+      "at_my_stop": "18:28",
+      "travel_time_min": 21,
+      "trip_id": "10213"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "18:19",
+      "at_my_stop": "18:39",
+      "travel_time_min": 20,
+      "trip_id": "10214"
+    },
+    {
+      "variant": "167Q",
+      "headsign": "167Q TEANECK QUEEN ANNE RD I-95 EXPRESS",
+      "departs_pabt": "18:30",
+      "at_my_stop": "18:50",
+      "travel_time_min": 20,
+      "trip_id": "10201"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "18:31",
+      "at_my_stop": "18:51",
+      "travel_time_min": 20,
+      "trip_id": "10215"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "18:45",
+      "at_my_stop": "19:05",
+      "travel_time_min": 20,
+      "trip_id": "10216"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "19:00",
+      "at_my_stop": "19:20",
+      "travel_time_min": 20,
+      "trip_id": "10225"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD TEANECK ARMORY",
+      "departs_pabt": "19:20",
+      "at_my_stop": "19:40",
+      "travel_time_min": 20,
+      "trip_id": "10217"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD DUMONT",
+      "departs_pabt": "19:40",
+      "at_my_stop": "19:59",
+      "travel_time_min": 19,
+      "trip_id": "10263"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "20:00",
+      "at_my_stop": "20:19",
+      "travel_time_min": 19,
+      "trip_id": "10258"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "20:20",
+      "at_my_stop": "20:39",
+      "travel_time_min": 19,
+      "trip_id": "10248"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD DUMONT",
+      "departs_pabt": "20:40",
+      "at_my_stop": "20:59",
+      "travel_time_min": 19,
+      "trip_id": "10264"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "21:00",
+      "at_my_stop": "21:19",
+      "travel_time_min": 19,
+      "trip_id": "10249"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD DUMONT",
+      "departs_pabt": "21:15",
+      "at_my_stop": "21:34",
+      "travel_time_min": 19,
+      "trip_id": "10266"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "21:30",
+      "at_my_stop": "21:49",
+      "travel_time_min": 19,
+      "trip_id": "10250"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD DUMONT",
+      "departs_pabt": "21:45",
+      "at_my_stop": "22:04",
+      "travel_time_min": 19,
+      "trip_id": "10270"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD DUMONT",
+      "departs_pabt": "22:15",
+      "at_my_stop": "22:34",
+      "travel_time_min": 19,
+      "trip_id": "10267"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK ROAD HARRINGTON PARK",
+      "departs_pabt": "22:30",
+      "at_my_stop": "22:49",
+      "travel_time_min": 19,
+      "trip_id": "10259"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD DUMONT",
+      "departs_pabt": "22:45",
+      "at_my_stop": "23:04",
+      "travel_time_min": 19,
+      "trip_id": "10268"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD DUMONT",
+      "departs_pabt": "23:20",
+      "at_my_stop": "23:39",
+      "travel_time_min": 19,
+      "trip_id": "10269"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD DUMONT",
+      "departs_pabt": "23:40",
+      "at_my_stop": "23:59",
+      "travel_time_min": 19,
+      "trip_id": "10271"
+    },
+    {
+      "variant": "167T",
+      "headsign": "167T I-95 EXPRESS TEANECK RD DUMONT",
+      "departs_pabt": "24:30",
+      "at_my_stop": "24:49",
+      "travel_time_min": 19,
+      "trip_id": "10272"
+    }
+  ]
+}

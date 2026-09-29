@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <title>167 Departures</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; overflow: hidden; }
+    body { font-family: 'Inter', -apple-system, sans-serif; display: flex; flex-direction: column; transition: background 0.3s, color 0.3s; }
+
+    /* ======= THEMES ======= */
+    body.dark {
+      --bg: #141a24; --bg-header: #1a2130; --bg-card: #1e2636; --bg-banner: #171e2a;
+      --border: #2a3345; --text: #e8ecf2; --text-dim: #a0aec0;
+      --text-muted: #718096; --text-faint: #5a6a80; --text-gone: #3e4c60;
+      --card-imminent-bg: #262418; --card-now-bg: #1a2618; --card-now-pulse: #1f2d1c;
+      --alert-bg: #261f10; --alert-border: #4a3a1a;
+      --clock: #f0f4f8; --eta: #f0f4f8;
+      --ring-track: #2a3345; --ring-fill: #0cbe6b;
+      background: var(--bg); color: var(--text);
+    }
+    body.light {
+      --bg: #f0f4f8; --bg-header: #ffffff; --bg-card: #ffffff; --bg-banner: #f8fafc;
+      --border: #e2e8f0; --text: #1e293b; --text-dim: #475569;
+      --text-muted: #64748b; --text-faint: #94a3b8; --text-gone: #cbd5e1;
+      --card-imminent-bg: #fefce8; --card-now-bg: #f0fdf4; --card-now-pulse: #dcfce7;
+      --alert-bg: #fefce8; --alert-border: #fde68a;
+      --clock: #0f172a; --eta: #0f172a;
+      --ring-track: #e2e8f0; --ring-fill: #0369a1;
+      background: var(--bg); color: var(--text);
+    }
+
+    /* --- Weather + refresh bars --- */
+
+    /* --- Weather row (current + hourly combined) --- */
+    .weather-row {
+      display: flex; align-items: center; gap: 0.3rem;
+      padding: 0.35rem 1rem; background: var(--bg-banner);
+      border-bottom: 1px solid var(--border);
+      overflow-x: auto; -webkit-overflow-scrolling: touch;
+      flex-wrap: nowrap;
+    }
+    .weather-row::-webkit-scrollbar { display: none; }
+    .wx-current {
+      display: flex; align-items: center; gap: 0.4rem;
+      padding-right: 0.6rem; margin-right: 0.3rem;
+      border-right: 1px solid var(--border); flex-shrink: 0;
+    }
+    .weather-icon { font-size: 1.5rem; line-height: 1; }
+    .wx-cur-data { display: flex; flex-direction: column; }
+    .weather-temp {
+      font-family: 'JetBrains Mono', monospace; font-weight: 700;
+      font-size: 1rem; color: var(--text); line-height: 1.1;
+    }
+    .weather-range { font-size: 0.58rem; color: var(--text-muted); display: flex; gap: 0.35rem; }
+    .weather-range span { white-space: nowrap; }
+    .weather-hi { color: #ef4444; }
+    .weather-lo { color: #3b82f6; }
+    .weather-night { color: #8b5cf6; }
+    body.light .weather-hi { color: #dc2626; }
+    body.light .weather-lo { color: #2563eb; }
+
+    /* Hourly cells (inline in weather row) */
+    .hour-cell {
+      display: flex; flex-direction: column; align-items: center;
+      min-width: 3.6rem; padding: 0.2rem 0.3rem; border-radius: 6px;
+      transition: background 0.2s; flex-shrink: 0;
+    }
+    .hour-cell.now-cell { background: rgba(12,190,107,0.12); }
+    body.light .hour-cell.now-cell { background: rgba(3,105,161,0.08); }
+    .hour-cell .h-time { font-size: 0.62rem; font-weight: 600; color: var(--text-muted); }
+    .hour-cell .h-icon { font-size: 1.15rem; line-height: 1.2; }
+    .hour-cell .h-temp {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 0.78rem; font-weight: 700; color: var(--text);
+    }
+    .hour-cell .h-rain { font-size: 0.52rem; color: #3b82f6; font-weight: 600; }
+    body.light .hour-cell .h-rain { color: #2563eb; }
+
+    /* --- Refresh bar (above direction tabs) --- */
+    .refresh-bar {
+      display: flex; align-items: center; justify-content: center;
+      gap: 0.5rem; padding: 0.25rem 1rem;
+      background: var(--bg-header); border-bottom: 1px solid var(--border);
+      font-size: 0.65rem; color: var(--text-muted);
+    }
+    .refresh-ring { width: 18px; height: 18px; position: relative; flex-shrink: 0; }
+    .refresh-ring svg { width: 100%; height: 100%; transform: rotate(-90deg); }
+    .refresh-ring .track { fill: none; stroke: var(--ring-track); stroke-width: 3; }
+    .refresh-ring .fill { fill: none; stroke: var(--ring-fill); stroke-width: 3; stroke-linecap: round; transition: stroke-dashoffset 1s linear; }
+    .refresh-label b { color: var(--text-dim); font-weight: 600; }
+
+    /* --- Header --- */
+    .header {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.7rem 1.2rem; background: var(--bg-header);
+      border-bottom: 1px solid var(--border);
+    }
+    .header-left { display: flex; align-items: center; gap: 0.8rem; }
+    .route-badge {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.6rem; font-weight: 800; color: #fff;
+      background: #005297; padding: 0.15rem 0.6rem;
+      border-radius: 6px; line-height: 1;
+    }
+    .header-meta { font-size: 0.8rem; font-weight: 600; color: var(--text-dim); }
+    .header-status { font-size: 0.7rem; color: var(--text-muted); margin-top: 0.1rem; }
+    .header-right { display: flex; align-items: center; gap: 0.8rem; }
+    .clock {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2rem; font-weight: 700; color: var(--clock);
+      letter-spacing: -0.02em; line-height: 1; text-align: right;
+    }
+    .clock-date { font-size: 0.65rem; color: var(--text-faint); text-align: right; margin-top: 0.15rem; }
+    .status-dot {
+      width: 7px; height: 7px; border-radius: 50%; display: inline-block;
+      margin-right: 0.25rem; vertical-align: middle;
+    }
+    .status-dot.live { background: #22c55e; animation: blink 2s ease-in-out infinite; }
+    .status-dot.stale { background: #f59e0b; }
+    .status-dot.error { background: #ef4444; }
+    @keyframes blink { 0%,100% { opacity: 1; } 50% { opacity: 0.3; } }
+    .theme-btn {
+      background: none; border: 1px solid var(--border); border-radius: 6px;
+      padding: 0.25rem 0.4rem; cursor: pointer; font-size: 0.9rem;
+      color: var(--text-muted); transition: all 0.2s; line-height: 1;
+    }
+    .theme-btn:hover { border-color: var(--text-dim); }
+
+    /* --- Direction tabs --- */
+    .dir-bar { display: flex; background: var(--bg-header); border-bottom: 1px solid var(--border); }
+    .dir-btn {
+      flex: 1; padding: 0.5rem; text-align: center; font-size: 0.8rem;
+      font-weight: 600; color: var(--text-faint); background: none; border: none;
+      border-bottom: 3px solid transparent; cursor: pointer; transition: all 0.2s;
+    }
+    .dir-btn.active { color: #0cbe6b; border-bottom-color: #0cbe6b; }
+    body.light .dir-btn.active { color: #0369a1; border-bottom-color: #0369a1; }
+
+    /* --- Departures --- */
+    .departures { flex: 1; overflow-y: auto; padding: 0.3rem; }
+    .dep-card {
+      display: grid; grid-template-columns: 5.5rem 1fr auto;
+      align-items: center; gap: 0.6rem;
+      padding: 0.9rem 1rem; margin: 0.35rem 0.4rem;
+      background: var(--bg-card); border-radius: 10px;
+      border-left: 4px solid var(--border); transition: all 0.3s;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+    }
+    .dep-card.variant-t { border-left-color: #3b82f6; }
+    .dep-card.variant-q { border-left-color: #10b981; }
+    .dep-card.imminent { border-left-color: #f59e0b; background: var(--card-imminent-bg); }
+    .dep-card.now { border-left-color: #22c55e; background: var(--card-now-bg); animation: pulse-bg 2s ease-in-out infinite; }
+    .dep-card.gone { opacity: 0.35; }
+    @keyframes pulse-bg { 0%,100% { background: var(--card-now-bg); } 50% { background: var(--card-now-pulse); } }
+
+    .dep-eta {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 2.2rem; font-weight: 800; color: var(--eta);
+      line-height: 1; text-align: center;
+      min-width: 5rem; padding-right: 0.5rem;
+    }
+    .dep-eta .unit { font-size: 0.9rem; font-weight: 600; color: var(--text-muted); }
+    .dep-card.imminent .dep-eta { color: #d97706; }
+    body.dark .dep-card.imminent .dep-eta { color: #fbbf24; }
+    .dep-card.now .dep-eta { color: #16a34a; }
+    body.dark .dep-card.now .dep-eta { color: #4ade80; }
+
+    .dep-info { min-width: 0; }
+    .dep-bus-title {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 1.4rem; font-weight: 800; line-height: 1.1; margin-bottom: 0.15rem;
+    }
+    .dep-bus-title.t { color: #3b82f6; }
+    .dep-bus-title.q { color: #10b981; }
+    body.light .dep-bus-title.t { color: #1d4ed8; }
+    body.light .dep-bus-title.q { color: #047857; }
+    .dep-headsign {
+      font-size: 0.75rem; font-weight: 500; color: var(--text-dim);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .dep-detail {
+      font-size: 0.68rem; color: var(--text-muted); margin-top: 0.1rem;
+      display: flex; gap: 0.6rem; flex-wrap: wrap; align-items: center;
+    }
+    .dep-detail .rt { color: #22c55e; font-weight: 600; }
+    .dep-detail .sched { color: var(--text-faint); }
+    .dep-detail .delay { color: #f59e0b; }
+    .dep-detail .early { color: #22c55e; }
+
+    .dep-right { text-align: right; min-width: 5.5rem; }
+    .dep-times { display: flex; flex-direction: column; gap: 0.15rem; }
+    .dep-time-row { display: flex; align-items: baseline; justify-content: flex-end; gap: 0.3rem; }
+    .dep-time {
+      font-family: 'JetBrains Mono', monospace; font-size: 1.15rem; font-weight: 700; color: var(--text);
+    }
+    .dep-time-label { font-size: 0.55rem; font-weight: 600; color: var(--text-faint); text-transform: uppercase; letter-spacing: 0.03em; }
+    .dep-time-arr { font-family: 'JetBrains Mono', monospace; font-size: 0.9rem; font-weight: 600; color: var(--text-dim); }
+    .dep-stops { font-size: 0.68rem; color: var(--text-muted); margin-top: 0.2rem; white-space: nowrap; }
+    .dep-stops.tracking { color: #0cbe6b; font-weight: 600; }
+    body.light .dep-stops.tracking { color: #0369a1; }
+
+    /* --- Alert --- */
+    .alert-bar {
+      padding: 0.4rem 1rem; background: var(--alert-bg);
+      border-bottom: 1px solid var(--alert-border); font-size: 0.68rem;
+      color: #f59e0b; display: none; overflow: hidden;
+    }
+    body.light .alert-bar { color: #92400e; }
+    .alert-bar.show { display: block; }
+    .alert-marquee { display: inline-block; white-space: nowrap; animation: scroll-left 25s linear infinite; }
+    @keyframes scroll-left { 0% { transform: translateX(100%); } 100% { transform: translateX(-100%); } }
+
+    /* --- Footer --- */
+    .footer {
+      padding: 0.3rem 1rem; background: var(--bg-header);
+      border-top: 1px solid var(--border); display: flex;
+      align-items: center; justify-content: space-between;
+      font-size: 0.6rem; color: var(--text-faint);
+    }
+    .footer a { color: var(--text-muted); text-decoration: none; }
+
+    .no-service { flex: 1; flex-direction: column; align-items: center; justify-content: center; color: var(--text-faint); gap: 0.5rem; display: none; }
+    .no-service.show { display: flex; }
+    .no-service .icon { font-size: 3rem; }
+    .no-service .msg { font-size: 1.1rem; font-weight: 600; }
+
+    /* Pause overlay */
+    .pause-overlay {
+      display: none; position: fixed; inset: 0; z-index: 999;
+      background: rgba(20,26,36,0.92); backdrop-filter: blur(6px);
+      flex-direction: column; align-items: center; justify-content: center; gap: 1rem;
+    }
+    body.light .pause-overlay { background: rgba(240,244,248,0.92); }
+    .pause-overlay.show { display: flex; }
+    .pause-overlay .pause-icon { font-size: 3rem; }
+    .pause-overlay .pause-msg { font-size: 1.1rem; font-weight: 600; color: var(--text); text-align: center; }
+    .pause-overlay .pause-sub { font-size: 0.8rem; color: var(--text-muted); }
+    .pause-overlay .resume-btn {
+      margin-top: 0.5rem; padding: 0.7rem 2rem; border: none; border-radius: 8px;
+      font-size: 1rem; font-weight: 700; cursor: pointer;
+      background: #0cbe6b; color: #fff; transition: transform 0.15s;
+    }
+    .pause-overlay .resume-btn:hover { transform: scale(1.05); }
+    .pause-overlay .resume-btn:active { transform: scale(0.97); }
+
+    /* --- Tablet --- */
+    @media (min-width: 768px) {
+      .dep-card { padding: 1.1rem 1.3rem; margin: 0.4rem 0.8rem; grid-template-columns: 6.5rem 1fr auto; }
+      .dep-eta { font-size: 2.8rem; }
+      .dep-bus-title { font-size: 1.7rem; }
+      .dep-headsign { font-size: 0.85rem; }
+      .dep-time { font-size: 1.3rem; }
+      .dep-time-arr { font-size: 1rem; }
+      .clock { font-size: 2.5rem; }
+      .route-badge { font-size: 1.8rem; }
+      .weather-icon { font-size: 1.6rem; }
+      .weather-temp { font-size: 1.1rem; }
+      .hour-cell { min-width: 4.2rem; padding: 0.25rem 0.35rem; }
+      .hour-cell .h-time { font-size: 0.72rem; }
+      .hour-cell .h-icon { font-size: 1.4rem; }
+      .hour-cell .h-temp { font-size: 0.9rem; }
+      .hour-cell .h-rain { font-size: 0.6rem; }
+      .weather-temp { font-size: 1.2rem; }
+      .weather-icon { font-size: 1.8rem; }
+    }
+    @media (min-width: 1024px) {
+      .dep-card { padding: 1.3rem 1.8rem; grid-template-columns: 7.5rem 1fr auto; }
+      .dep-eta { font-size: 3.2rem; }
+      .dep-bus-title { font-size: 2rem; }
+      .hour-cell { min-width: 4.8rem; }
+      .hour-cell .h-icon { font-size: 1.6rem; }
+      .hour-cell .h-temp { font-size: 1rem; }
+    }
+  </style>
+</head>
+<body class="dark">
+
+  <!-- === Weather row: current conditions + hourly forecast === -->
+  <div class="weather-row" id="weatherRow">
+    <div class="wx-current">
+      <span class="weather-icon" id="wxIcon">⏳</span>
+      <div class="wx-cur-data">
+        <span class="weather-temp" id="wxTemp">--°</span>
+        <div class="weather-range">
+          <span class="weather-hi" id="wxHi">↑--°</span>
+          <span class="weather-lo" id="wxLo">↓--°</span>
+          <span class="weather-night" id="wxNight">🌙--°</span>
+        </div>
+      </div>
+    </div>
+    <div id="hourlyStrip" style="display:flex;gap:0.2rem;flex-wrap:nowrap;align-items:center"></div>
+  </div>
+
+  <div class="header">
+    <div class="header-left">
+      <div class="route-badge">167</div>
+      <div>
+        <div class="header-meta">NJ Transit · <span id="hdrDir">To New York</span></div>
+        <div class="header-status"><span class="status-dot live" id="statusDot"></span><span id="statusText">Connecting...</span></div>
+      </div>
+    </div>
+    <div class="header-right">
+      <button class="theme-btn" id="themeBtn" onclick="toggleTheme()" title="Toggle theme">🌙</button>
+      <div>
+        <div class="clock" id="clock">--:--</div>
+        <div class="clock-date" id="clockDate"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- === Refresh timer bar === -->
+  <div class="refresh-bar">
+    <div class="refresh-ring">
+      <svg viewBox="0 0 24 24">
+        <circle class="track" cx="12" cy="12" r="10" />
+        <circle class="fill" id="refreshRing" cx="12" cy="12" r="10"
+          stroke-dasharray="62.83" stroke-dashoffset="0" />
+      </svg>
+    </div>
+    <span class="refresh-label"><span id="refreshText">Updated just now</span> · next in <b id="refreshCountdown">60</b>s</span>
+  </div>
+
+  <div class="dir-bar">
+    <button class="dir-btn active" data-dir="to_ny" onclick="switchDir('to_ny')">→ To New York</button>
+    <button class="dir-btn" data-dir="from_ny" onclick="switchDir('from_ny')">← From New York</button>
+  </div>
+
+  <div class="alert-bar" id="alertBar"><span class="alert-marquee" id="alertText"></span></div>
+  <div class="departures" id="depList"></div>
+  <div class="no-service" id="noService">
+    <div class="icon">🌙</div>
+    <div class="msg">No upcoming departures</div>
+    <div style="font-size:0.85rem" id="noServiceSub"></div>
+  </div>
+
+  <!-- Pause overlay (20-min hard stop) -->
+  <div class="pause-overlay" id="pauseOverlay">
+    <div class="pause-icon">⏸️</div>
+    <div class="pause-msg">Auto-refresh paused</div>
+    <div class="pause-sub">20-minute session limit reached to save API quota</div>
+    <button class="resume-btn" onclick="resumeSession()">▶ Resume for 20 more minutes</button>
+  </div>
+
+  <div class="footer">
+    <span><a href="/mybus.html">Schedule →</a> · <a href="/">Dashboard →</a></span>
+    <a href="https://transitapp.com" target="_blank" rel="noopener" style="display:inline-flex;align-items:center;gap:0.35rem;text-decoration:none;color:var(--text-muted);font-size:0.6rem">
+      Powered by
+      <svg width="52" height="12" viewBox="0 0 260 60" fill="none" xmlns="http://www.w3.org/2000/svg" style="vertical-align:middle">
+        <path d="M0 14.4h29.5v8.3H19v37.3h-9V22.7H0V14.4zm34.3 12.8h8.4v5.2h.2c1.8-3.8 5.2-6 9.6-6 .8 0 1.7.1 2.4.3v8.4c-1-.3-2.2-.4-3.3-.4-5.6 0-8.9 3.4-8.9 9.5V60h-8.4V27.2zm40.2 0h8.4v5h.2c2.2-3.6 6-5.8 10.6-5.8 4.2 0 7.6 1.6 9.6 4.8 2.4-3.2 6.4-4.8 10.8-4.8 7.6 0 12 4.8 12 13V60h-8.4V46.4c0-4.8-2.2-7.6-6.4-7.6-4.4 0-7.4 3.2-7.4 8V60h-8.4V46.4c0-4.8-2.2-7.6-6.4-7.6-4.4 0-7.4 3.2-7.4 8V60h-8.4V27.2h1.2zm75.3 0h8.4v5h.2c2.2-3.8 6.2-5.8 11-5.8 8.6 0 14.4 7 14.4 17.2S178 60.8 169.4 60.8c-4.8 0-8.6-2-10.8-5.6h-.2v16.4h-8.4V27.2zm8.4 16.4c0 6 3.6 10.2 9 10.2s9-4.2 9-10.2-3.6-10.2-9-10.2-9 4.2-9 10.2zm47.6-17.2h8.4V60h-8.4V27.2h0zm4.2-16c3 0 5.2 2.2 5.2 5.2s-2.2 5.2-5.2 5.2-5.2-2.2-5.2-5.2 2.2-5.2 5.2-5.2zm17.6 16h8.4v5h.2c2.2-3.6 6-5.8 10.6-5.8 8 0 12.4 5 12.4 13.4V60h-8.4V46.4c0-5-2.4-7.8-7-7.8-5 0-8.2 3.4-8.2 8.4V60h-8.4V27.2h.4z" fill="#0cbe6b"/>
+      </svg>
+    </a>
+  </div>
+
+<script>
+// ===== THEME =====
+function setTheme(t) {
+  document.body.className = t;
+  document.getElementById('themeBtn').textContent = t === 'dark' ? '☀️' : '🌙';
+  localStorage.setItem('board-theme', t);
+}
+function toggleTheme() { setTheme(document.body.classList.contains('dark') ? 'light' : 'dark'); }
+setTheme(localStorage.getItem('board-theme') || 'dark');
+
+// ===== CONFIG =====
+const REFRESH_INTERVAL = 60; // seconds
+const STOPS = {
+  to_ny: { ids: 'NJTB:168214,NJTB:166027', myStops: { 'NJTB:168214': { name: 'Teaneck Rd & Oakdene Ave', variant: 'T' }, 'NJTB:166027': { name: 'Degraw Ave & Morningside Ter', variant: 'Q' } }, direction: 'To New York' },
+  from_ny: { ids: 'NJTB:168226,NJTB:166164', myStops: { 'NJTB:168226': { name: 'Teaneck Rd & Puffin Way', variant: 'T' }, 'NJTB:166164': { name: 'Degraw Ave & Woodbine St', variant: 'Q' } }, direction: 'From New York' }
+};
+const RIDE_TIMES = { to_ny: { T: 26, Q: 33 }, from_ny: { T: 22, Q: 24 } };
+
+let currentDir = 'to_ny', lastData = null, tripCache = {}, tripStopsAwayCache = {};
+let refreshSecondsLeft = REFRESH_INTERVAL;
+let lastFetchTime = null;
+
+// ===== CLOCK =====
+function updateClock() {
+  const n = new Date();
+  document.getElementById('clock').textContent = n.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: true });
+  document.getElementById('clockDate').textContent = n.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' });
+}
+setInterval(updateClock, 1000); updateClock();
+
+// ===== REFRESH RING =====
+const RING_CIRCUMFERENCE = 2 * Math.PI * 10; // 62.83
+function updateRefreshRing() {
+  refreshSecondsLeft = Math.max(0, refreshSecondsLeft - 1);
+  const progress = 1 - (refreshSecondsLeft / REFRESH_INTERVAL);
+  const offset = RING_CIRCUMFERENCE * (1 - progress);
+  document.getElementById('refreshRing').style.strokeDashoffset = offset;
+  document.getElementById('refreshCountdown').textContent = refreshSecondsLeft;
+
+  // Update "last updated" text
+  if (lastFetchTime) {
+    const ago = Math.floor((Date.now() - lastFetchTime) / 1000);
+    document.getElementById('refreshText').textContent =
+      ago < 5 ? 'Updated just now' : `Updated ${ago}s ago`;
+  }
+}
+setInterval(updateRefreshRing, 1000);
+
+// ===== DIRECTION =====
+function switchDir(dir) {
+  currentDir = dir;
+  document.querySelectorAll('.dir-btn').forEach(b => b.classList.toggle('active', b.dataset.dir === dir));
+  document.getElementById('hdrDir').textContent = STOPS[dir].direction;
+  lastData = null; tripStopsAwayCache = {};
+  // Fetch immediately when switching (including From NY on first click)
+  fetchDepartures();
+}
+// Default to To NY; do NOT auto-fetch From NY on page load
+if (new Date().getHours() >= 13) {
+  // After 1 PM, default to From NY — this triggers a fetch via switchDir
+  switchDir('from_ny');
+} else {
+  // Morning: default is to_ny, fetchDepartures called by startRefreshLoop
+}
+
+// ===== WEATHER =====
+const WMO_ICONS = {
+  0: '☀️', 1: '🌤️', 2: '⛅', 3: '☁️',
+  45: '🌫️', 48: '🌫️',
+  51: '🌦️', 53: '🌧️', 55: '🌧️',
+  56: '🌨️', 57: '🌨️',
+  61: '🌦️', 63: '🌧️', 65: '🌧️',
+  66: '🌨️', 67: '🌨️',
+  71: '🌨️', 73: '❄️', 75: '❄️',
+  77: '❄️', 80: '🌦️', 81: '🌧️', 82: '🌧️',
+  85: '🌨️', 86: '❄️',
+  95: '⛈️', 96: '⛈️', 99: '⛈️'
+};
+
+async function fetchWeather() {
+  try {
+    const res = await fetch('/api/weather');
+    if (!res.ok) return;
+    const d = await res.json();
+    const cur = d.current;
+    const day = d.daily;
+    const hourly = d.hourly;
+
+    // Current conditions
+    const icon = WMO_ICONS[cur.weather_code] || '🌡️';
+    const temp = Math.round(cur.temperature_2m);
+    const hi = Math.round(day.temperature_2m_max[0]);
+    const lo = Math.round(day.temperature_2m_min[0]);
+    const night = Math.round((lo + lo + temp) / 3);
+
+    document.getElementById('wxIcon').textContent = icon;
+    document.getElementById('wxTemp').textContent = `${temp}°F`;
+    document.getElementById('wxHi').textContent = `↑ ${hi}°`;
+    document.getElementById('wxLo').textContent = `↓ ${lo}°`;
+    document.getElementById('wxNight').textContent = `🌙 ${night}°`;
+
+    // Hourly strip (next 9 hours)
+    if (hourly && hourly.time) {
+      const nowHour = new Date().getHours();
+      const todayStr = new Date().toISOString().slice(0, 10);
+      let startIdx = hourly.time.findIndex(t => {
+        const hd = new Date(t);
+        return hd.getHours() >= nowHour && t.slice(0,10) === todayStr;
+      });
+      if (startIdx < 0) startIdx = 0;
+
+      let html = '';
+      for (let i = startIdx; i < startIdx + 9 && i < hourly.time.length; i++) {
+        const dt = new Date(hourly.time[i]);
+        const hTemp = Math.round(hourly.temperature_2m[i]);
+        const hCode = hourly.weather_code[i];
+        const hIcon = WMO_ICONS[hCode] || '🌡️';
+        const hRain = hourly.precipitation_probability?.[i] || 0;
+        const isNow = (i === startIdx);
+        const hr = dt.getHours();
+        const ampm = hr >= 12 ? 'p' : 'a';
+        const hr12 = hr === 0 ? 12 : hr > 12 ? hr - 12 : hr;
+        const timeLabel = isNow ? 'Now' : `${hr12}${ampm}`;
+        html += `<div class="hour-cell${isNow ? ' now-cell' : ''}">
+          <span class="h-time">${timeLabel}</span>
+          <span class="h-icon">${hIcon}</span>
+          <span class="h-temp">${hTemp}°</span>
+          ${hRain > 10 ? `<span class="h-rain">💧${hRain}%</span>` : '<span class="h-rain">&nbsp;</span>'}
+        </div>`;
+      }
+      document.getElementById('hourlyStrip').innerHTML = html;
+    }
+  } catch (e) { console.error('Weather error:', e); }
+}
+fetchWeather();
+setInterval(fetchWeather, 15 * 60 * 1000); // every 15 min
+
+// ===== FETCH DEPARTURES =====
+async function fetchDepartures() {
+  const cfg = STOPS[currentDir];
+  try {
+    const res = await fetch(`/api/transit/departures?stop_ids=${encodeURIComponent(cfg.ids)}&max_departures=5`);
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    lastData = await res.json();
+    setStatus('live', 'Live');
+    renderDepartures(lastData);
+    fetchLiveBusTrips(lastData);
+    lastFetchTime = Date.now();
+    refreshSecondsLeft = REFRESH_INTERVAL;
+  } catch (err) {
+    setStatus('error', 'Connection error');
+    console.error(err);
+  }
+}
+
+function setStatus(type, text) {
+  document.getElementById('statusDot').className = 'status-dot ' + type;
+  document.getElementById('statusText').textContent = text;
+}
+
+// ===== TRIP DETAILS (stops-away) =====
+async function fetchLiveBusTrips(data) {
+  const cfg = STOPS[currentDir]; const now = Date.now() / 1000;
+  const liveTrips = [];
+  for (const rd of (data.route_departures || [])) {
+    if (rd.route_short_name !== '167') continue;
+    const sid = rd.global_stop_id; if (!cfg.myStops[sid]) continue;
+    for (const mi of (rd.merged_itineraries || []))
+      for (const si of (mi.schedule_items || []))
+        // Only track buses arriving within 15 min to save API calls
+        if (si.is_real_time && si.departure_time > now && (si.departure_time - now) <= 15 * 60)
+          liveTrips.push({ key: si.trip_search_key, stopId: sid });
+  }
+  if (!liveTrips.length) return;
+  const first = liveTrips[0];
+  const cached = tripCache[first.key];
+  if (cached && (Date.now() - cached.fetchedAt) < 30000) { computeStopsAway(cached.data, first.key, first.stopId); return; }
+  try {
+    const res = await fetch(`/api/transit/trip?trip_search_key=${encodeURIComponent(first.key)}`);
+    if (!res.ok) return;
+    const td = await res.json();
+    tripCache[first.key] = { data: td, fetchedAt: Date.now() };
+    computeStopsAway(td, first.key, first.stopId);
+    if (lastData) renderDepartures(lastData);
+  } catch (e) { console.error(e); }
+}
+
+function computeStopsAway(td, key, myStopId) {
+  const now = Date.now() / 1000; const items = td.schedule_items || [];
+  let myIdx = -1, busIdx = -1;
+  for (let i = 0; i < items.length; i++) {
+    if (items[i].stop?.global_stop_id === myStopId) myIdx = i;
+    if (items[i].departure_time <= now + 30) busIdx = i;
+  }
+  if (myIdx >= 0 && busIdx >= 0 && myIdx > busIdx)
+    tripStopsAwayCache[key] = { stopsAway: myIdx - busIdx, busAt: items[busIdx]?.stop?.stop_name || '?', fetchedAt: Date.now() };
+}
+
+// ===== RENDER =====
+function renderDepartures(data) {
+  const cfg = STOPS[currentDir]; const now = Date.now() / 1000;
+  const depList = document.getElementById('depList');
+  const noService = document.getElementById('noService');
+  const alertBar = document.getElementById('alertBar');
+
+  let deps = [], alerts = [];
+  for (const rd of (data.route_departures || [])) {
+    if (rd.route_short_name !== '167') continue;
+    const stopId = rd.global_stop_id; if (!cfg.myStops[stopId]) continue;
+    for (const a of (rd.alerts || [])) if (a.title) alerts.push(a.title + (a.description ? ': ' + a.description.split('\n')[0] : ''));
+    const vInfo = cfg.myStops[stopId];
+    for (const mi of (rd.merged_itineraries || [])) {
+      const hs = {};
+      for (const it of (mi.itineraries || [])) hs[it.internal_itinerary_id] = { headsign: it.headsign || it.merged_headsign || '?', branch: it.branch_code || '' };
+      for (const si of (mi.schedule_items || [])) {
+        const h = hs[si.internal_itinerary_id] || { headsign: '?' };
+        deps.push({ departure: si.departure_time, scheduled: si.scheduled_departure_time, isRealTime: si.is_real_time, isCancelled: si.is_cancelled, tripKey: si.trip_search_key, variant: vInfo.variant, headsign: h.headsign, stopId, stopName: vInfo.name });
+      }
+    }
+  }
+  deps.sort((a, b) => a.departure - b.departure);
+
+  // Keep last departed per variant
+  const lastDep = {};
+  for (const d of deps) if (d.departure <= now) { if (!lastDep[d.variant] || d.departure > lastDep[d.variant].departure) lastDep[d.variant] = d; }
+  const keepKeys = new Set(Object.values(lastDep).map(d => d.tripKey));
+  deps = deps.filter(d => d.departure > now || keepKeys.has(d.tripKey));
+
+  if (alerts.length) { alertBar.classList.add('show'); document.getElementById('alertText').textContent = '⚠️ ' + [...new Set(alerts)].join('  ·  '); }
+  else alertBar.classList.remove('show');
+
+  if (!deps.length) { depList.innerHTML = ''; noService.classList.add('show'); depList.style.display = 'none'; return; }
+  noService.classList.remove('show'); depList.style.display = '';
+
+  let html = '';
+  for (const d of deps) {
+    const diffSec = d.departure - now, diffMin = Math.floor(diffSec / 60);
+    const delaySec = d.departure - d.scheduled;
+    let sc = ''; if (diffSec < -30) sc = 'gone'; else if (diffMin <= 2) sc = 'now'; else if (diffMin <= 8) sc = 'imminent';
+    const vc = d.variant === 'T' ? 'variant-t' : 'variant-q';
+
+    let etaHtml;
+    if (diffSec < -30) etaHtml = `<span style="font-size:1rem;color:var(--text-gone)">${Math.abs(diffMin)}m ago</span>`;
+    else if (diffMin <= 0) etaHtml = 'NOW';
+    else if (diffMin >= 60) { const hh = Math.floor(diffMin/60), mm = diffMin%60; etaHtml = `${hh}<span class="unit">h</span>${mm}<span class="unit">m</span>`; }
+    else etaHtml = `${diffMin}<span class="unit">min</span>`;
+
+    let delayHtml = '';
+    if (delaySec > 30) delayHtml = `<span class="delay">+${Math.round(delaySec/60)}m late</span>`;
+    else if (delaySec < -30) delayHtml = `<span class="early">${Math.round(delaySec/60)}m early</span>`;
+
+    const rtHtml = d.isRealTime ? `<span class="rt">● GPS</span>` : `<span class="sched">○ Schedule</span>`;
+    const depTime = fmtTime(d.departure), schedTime = fmtTime(d.scheduled);
+    const rideMins = RIDE_TIMES[currentDir]?.[d.variant] || 30;
+    const arrTime = fmtTime(d.departure + rideMins * 60);
+    const arrLabel = currentDir === 'to_ny' ? 'arr PABT' : 'arr home';
+    const tc = d.variant === 'T' ? 't' : 'q';
+    let hs = d.headsign; if (hs.length > 40) hs = hs.substring(0, 38) + '…';
+
+    let stopsHtml;
+    const sa = tripStopsAwayCache[d.tripKey];
+    if (sa && (Date.now() - sa.fetchedAt) < 90000) stopsHtml = `<div class="dep-stops tracking">📍 ${sa.stopsAway} stop${sa.stopsAway!==1?'s':''} away</div>`;
+    else stopsHtml = `<div class="dep-stops">${d.isRealTime ? '● Tracking' : ''}</div>`;
+
+    html += `<div class="dep-card ${vc} ${sc}">
+  <div class="dep-eta">${etaHtml}</div>
+  <div class="dep-info">
+    <div class="dep-bus-title ${tc}">167${d.variant}</div>
+    <div class="dep-headsign">${hs}</div>
+    <div class="dep-detail">${rtHtml} <span>sched ${schedTime}</span> ${delayHtml}</div>
+  </div>
+  <div class="dep-right">
+    <div class="dep-times">
+      <div class="dep-time-row"><span class="dep-time-label">dep</span><span class="dep-time">${depTime}</span></div>
+      <div class="dep-time-row"><span class="dep-time-label">${arrLabel}</span><span class="dep-time-arr">${arrTime}</span></div>
+    </div>
+    ${stopsHtml}
+  </div>
+</div>`;
+  }
+  depList.innerHTML = html;
+}
+
+function fmtTime(ts) { return new Date(ts * 1000).toLocaleTimeString('en-US', { hour: 'numeric', minute: '2-digit', hour12: true }); }
+
+// ===== AUTO-REFRESH (pause when hidden + 20min hard stop) =====
+let refreshTimer = null;
+let tickTimer = null;
+const MAX_SESSION_MS = 20 * 60 * 1000; // 20 minutes
+let sessionStartTime = Date.now();
+let sessionPaused = false;
+
+function startRefreshLoop() {
+  if (sessionPaused) return;
+  if (refreshTimer) return;
+  refreshTimer = setInterval(fetchDepartures, REFRESH_INTERVAL * 1000);
+  tickTimer = setInterval(() => {
+    // Check 20-min hard stop
+    if (Date.now() - sessionStartTime >= MAX_SESSION_MS) {
+      pauseSession();
+      return;
+    }
+    if (lastData) renderDepartures(lastData);
+  }, 1000);
+  fetchDepartures();
+}
+
+function stopRefreshLoop() {
+  if (refreshTimer) { clearInterval(refreshTimer); refreshTimer = null; }
+  if (tickTimer) { clearInterval(tickTimer); tickTimer = null; }
+}
+
+function pauseSession() {
+  sessionPaused = true;
+  stopRefreshLoop();
+  setStatus('stale', 'Paused — 20 min limit');
+  document.getElementById('pauseOverlay').classList.add('show');
+}
+
+function resumeSession() {
+  sessionPaused = false;
+  sessionStartTime = Date.now();
+  document.getElementById('pauseOverlay').classList.remove('show');
+  startRefreshLoop();
+}
+
+// Start on load
+startRefreshLoop();
+
+// ===== WAKE LOCK + VISIBILITY =====
+async function requestWakeLock() { try { if ('wakeLock' in navigator) await navigator.wakeLock.request('screen'); } catch(e) {} }
+requestWakeLock();
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    requestWakeLock();
+    if (!sessionPaused) startRefreshLoop();
+  } else {
+    stopRefreshLoop();
+    if (!sessionPaused) setStatus('stale', 'Paused (tab hidden)');
+  }
+});
+</script>
+</body>
+</html>

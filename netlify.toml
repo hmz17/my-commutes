@@ -11,3 +11,32 @@
   from = "/api/directions"
   to = "/.netlify/functions/directions"
   status = 200
+
+[[redirects]]
+  from = "/api/transit/departures"
+  to = "/.netlify/functions/transit-departures"
+  status = 200
+
+[[redirects]]
+  from = "/api/transit/trip"
+  to = "/.netlify/functions/transit-trip"
+  status = 200
+
+[[redirects]]
+  from = "/api/weather"
+  to = "/.netlify/functions/weather"
+  status = 200
+
+# Livereload endpoint returns a static timestamp in prod (no-op)
+[[redirects]]
+  from = "/api/livereload"
+  to = "/.netlify/functions/livereload"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"

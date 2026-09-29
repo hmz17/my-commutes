@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>myBus — Route 167</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      background: #0b1120; color: #e2e8f0; min-height: 100vh; overflow-x: hidden;
+    }
+
+    .topbar {
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0.6rem 1rem; background: #111827; border-bottom: 1px solid #1e293b;
+      position: sticky; top: 0; z-index: 100;
+    }
+    .topbar a { color: #64748b; text-decoration: none; font-size: 0.8rem; }
+    .topbar a:hover { color: #e2e8f0; }
+    .topbar h1 { font-size: 1rem; font-weight: 700; color: #f1f5f9; }
+    .topbar .clock { font-size: 0.75rem; color: #64748b; font-variant-numeric: tabular-nums; }
+
+    .dir-tabs {
+      display: flex; background: #111827; border-bottom: 1px solid #1e293b;
+    }
+    .dir-tab {
+      flex: 1; padding: 0.55rem 1rem; text-align: center; font-size: 0.82rem;
+      cursor: pointer; color: #64748b; border: none; border-bottom: 2px solid transparent;
+      background: none; transition: all 0.15s;
+    }
+    .dir-tab.active { color: #38bdf8; border-bottom-color: #38bdf8; font-weight: 600; }
+    .dir-tab:hover:not(.active) { color: #94a3b8; }
+
+    .hero {
+      padding: 0.8rem 1rem;
+      background: linear-gradient(135deg, #0c1e36 0%, #0f172a 100%);
+      border-bottom: 1px solid #1e293b;
+    }
+    .hero-inner {
+      max-width: 640px; margin: 0 auto; display: flex; align-items: center; gap: 1rem;
+    }
+    .hero-countdown {
+      font-size: 2rem; font-weight: 800; color: #38bdf8;
+      font-variant-numeric: tabular-nums; line-height: 1; min-width: 4.5rem;
+    }
+    .hero-countdown.variant-t { color: #60a5fa; }
+    .hero-countdown.variant-q { color: #34d399; }
+    .hero-countdown.soon { color: #fbbf24; }
+    .hero-countdown.now { color: #34d399; animation: pulse 1.5s ease-in-out infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.6} }
+    .hero-detail { font-size: 0.78rem; color: #94a3b8; line-height: 1.4; }
+    .hero-detail strong { color: #e2e8f0; }
+
+    .legend {
+      display: flex; gap: 1rem; padding: 0.4rem 1rem; justify-content: center;
+      background: #0f172a; border-bottom: 1px solid #1e293b; font-size: 0.65rem; color: #64748b;
+    }
+    .legend span { display: flex; align-items: center; gap: 0.25rem; }
+    .legend .sw { width: 8px; height: 8px; border-radius: 2px; }
+
+    .route-tree { max-width: 640px; margin: 0 auto; padding: 0 0 2rem 0; }
+
+    .section-hdr {
+      font-size: 0.62rem; text-transform: uppercase; letter-spacing: 0.06em;
+      color: #475569; padding: 0.5rem 1rem 0.2rem;
+    }
+
+    /* Stop row */
+    .stop-row {
+      display: flex; align-items: stretch; min-height: 2.2rem;
+    }
+    .stop-row.my-stop { background: rgba(56,189,248,0.06); }
+
+    .gutter {
+      width: 2.2rem; flex-shrink: 0;
+      display: flex; flex-direction: column; align-items: center;
+    }
+    .ln { width: 3px; flex: 1; }
+    .ln.sh { background: #475569; }
+    .ln.tl { background: #3b82f6; }
+    .ln.ql { background: #10b981; }
+    .ln.none { background: transparent; }
+
+    .dt {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; z-index: 2;
+    }
+    .dt.sh { background: #475569; border: 2px solid #1e293b; }
+    .dt.tl { background: #3b82f6; border: 2px solid #0b1120; }
+    .dt.ql { background: #10b981; border: 2px solid #0b1120; }
+    .dt.my {
+      width: 12px; height: 12px; background: #38bdf8;
+      border: 2px solid #0b1120; box-shadow: 0 0 8px rgba(56,189,248,0.5);
+    }
+    .dt.term {
+      width: 12px; height: 12px; background: #f59e0b; border: 2px solid #0b1120;
+    }
+
+    .si {
+      flex: 1; display: flex; align-items: center; justify-content: space-between;
+      padding: 0.3rem 0.5rem; gap: 0.3rem; min-width: 0;
+    }
+    .sn {
+      font-size: 0.72rem; color: #94a3b8;
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+      flex: 1; min-width: 0;
+    }
+    .stop-row.my-stop .sn { color: #38bdf8; font-weight: 700; font-size: 0.76rem; }
+    .stop-row.terminal .sn { color: #f59e0b; font-weight: 700; font-size: 0.76rem; }
+
+    .sl {
+      font-size: 0.52rem; color: #38bdf8; background: rgba(56,189,248,0.12);
+      padding: 0.06rem 0.25rem; border-radius: 3px; font-weight: 700;
+      white-space: nowrap; flex-shrink: 0; margin-left: 0.2rem;
+    }
+
+    .etas { display: flex; gap: 0.15rem; flex-shrink: 0; }
+    .eb {
+      font-size: 0.62rem; font-weight: 700;
+      padding: 0.1rem 0.3rem; border-radius: 3px;
+      font-variant-numeric: tabular-nums; min-width: 1.8rem; text-align: center;
+    }
+    .eb.imm { background: #065f46; color: #34d399; }
+    .eb.soon { background: #713f12; color: #fde68a; }
+    .eb.norm { background: #1e293b; color: #94a3b8; }
+    .eb.gone { background: #1e1e1e; color: #4b5563; }
+    .eb.vt { border-left: 2px solid #3b82f6; }
+    .eb.vq { border-left: 2px solid #10b981; }
+    .vbadge {
+      font-size: 0.5rem; font-weight: 800; padding: 0.1rem 0.2rem;
+      border-radius: 2px; line-height: 1; margin-right: -0.05rem;
+      min-width: 1rem; text-align: center;
+    }
+    .vbadge.vt { background: rgba(59,130,246,0.2); color: #60a5fa; }
+    .vbadge.vq { background: rgba(16,185,129,0.2); color: #34d399; }
+    .hero-variant {
+      font-size: 0.65rem; font-weight: 800; padding: 0.15rem 0.4rem;
+      border-radius: 4px; margin-bottom: 0.15rem; display: inline-block;
+    }
+    .hero-variant.vt { background: rgba(59,130,246,0.18); color: #60a5fa; }
+    .hero-variant.vq { background: rgba(16,185,129,0.18); color: #34d399; }
+
+    /* Branch layout */
+    .branch-container { display: flex; gap: 0; }
+    .branch-col { flex: 1; min-width: 0; }
+    .branch-hdr {
+      font-size: 0.6rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.04em; padding: 0.35rem 0.3rem 0.15rem; text-align: center;
+    }
+    .t-branch .branch-hdr { color: #60a5fa; }
+    .q-branch .branch-hdr { color: #34d399; }
+    .branch-col .gutter { width: 1.8rem; }
+    .branch-col .sn { font-size: 0.65rem; }
+    .branch-col .eb { font-size: 0.58rem; min-width: 1.5rem; padding: 0.08rem 0.2rem; }
+
+    .branch-divider { width: 1px; background: #1e293b; flex-shrink: 0; }
+
+    .fork-row {
+      display: flex; align-items: center; justify-content: center;
+      min-height: 1.8rem; position: relative;
+    }
+    .fork-label {
+      font-size: 0.58rem; color: #64748b; background: #0b1120;
+      padding: 0.12rem 0.5rem; border-radius: 10px; border: 1px solid #1e293b;
+      z-index: 2; white-space: nowrap;
+    }
+
+    .express-gap { display: flex; align-items: stretch; min-height: 1.4rem; }
+    .express-gap .gl {
+      width: 3px; background: repeating-linear-gradient(
+        to bottom, #475569 0px, #475569 3px, transparent 3px, transparent 6px);
+    }
+    .express-gap .glb {
+      flex: 1; display: flex; align-items: center;
+      padding: 0 0.5rem; font-size: 0.58rem; color: #475569; font-style: italic;
+    }
+
+    .meta-footer { text-align: center; padding: 1rem; color: #334155; font-size: 0.58rem; }
+  </style>
+</head>
+<body>
+  <div class="topbar">
+    <a href="/">← Dashboard</a>
+    <h1>🚌 167</h1>
+    <span class="clock" id="clock"></span>
+  </div>
+  <div class="dir-tabs">
+    <button class="dir-tab" data-dir="to_ny" onclick="setDir('to_ny')">→ To New York</button>
+    <button class="dir-tab active" data-dir="from_ny" onclick="setDir('from_ny')">← From New York</button>
+  </div>
+  <div class="hero" id="hero"></div>
+  <div class="legend" id="legend"></div>
+  <div class="route-tree" id="routeTree"></div>
+  <div class="meta-footer" id="metaFooter"></div>
+
+  <script>
+    let DATA = null, ROUTES = null, STOPTIMES = null;
+    let currentDir = 'from_ny';
+
+    // Tree topology FROM NY:
+    //   shared prefix stop_ids: ['3511', '3177']
+    //   167T branch: from_ny_167t indices 2..16 (stops 3-17)
+    //   167Q branch: from_ny_167q indices 2..23 (stops 3-24)
+    //   shared tail stop_ids: from_ny_167t indices 17..24 (= from_ny_167q indices 24..31)
+    const TREE = {
+      prefix: ['3511', '3177'],
+      tBranch: { routeKey: 'from_ny_167t', start: 2, end: 17, myStopId: '379', myLabel: 'YOU EXIT' },
+      qBranch: { routeKey: 'from_ny_167q', start: 2, end: 24, myStopId: '341', myLabel: 'YOU EXIT' },
+      tail:    { routeKey: 'from_ny_167t', start: 17, end: 25 },
+    };
+
+    const TO_NY_CONFIG = {
+      '167T':     { routeKey: 'to_ny_167t',     myStopId: '422', myLabel: 'YOU BOARD' },
+      '167Q-EXP': { routeKey: 'to_ny_167q_exp', myStopId: '335', myLabel: 'YOU BOARD' },
+      '167Q-RP':  { routeKey: 'to_ny_167q_rp',  myStopId: '335', myLabel: 'YOU BOARD' },
+    };
+
+    // To NY tree topology:
+    //   Shared Teaneck North: T[0..6] = QRP[0..6] (Liberty Rd → Amsterdam Ave)
+    //   Fork at State St:
+    //     T branch:  T[7..22]  (Teaneck Rd south → Degraw/Burr)
+    //     Q branch:  QEXP[0..19] / QRP[7..23] (State St → Queen Anne → Degraw)
+    //       Q-RP extra: QRP[24..40] (local Teaneck → Challenger Rd)
+    //   Shared suffix: merge at Degraw/Burr → I-95 → PABT
+    const TO_NY_TREE = {
+      sharedPrefix: { routeKey: 'to_ny_167t', start: 0, end: 7 }, // Liberty Rd → Amsterdam Ave
+      tBranch:  { routeKey: 'to_ny_167t', start: 7, end: 23, myStopId: '422', myLabel: 'YOU BOARD' },
+      qBranch:  { routeKey: 'to_ny_167q_exp', start: 0, end: 20, myStopId: '335', myLabel: 'YOU BOARD' },
+      sharedSuffix: ['43274'], // PABT (drop-off is filtered)
+    };
+
+    const PABT_IDS = new Set(['43274','43310','3511']);
+
+    async function init() {
+      const [d, r, s] = await Promise.all([
+        fetch('/data/bus167.json').then(r => r.json()),
+        fetch('/data/bus167-routes.json').then(r => r.json()),
+        fetch('/data/bus167-stoptimes.json').then(r => r.json()),
+      ]);
+      DATA = d; ROUTES = r; STOPTIMES = s;
+      document.getElementById('metaFooter').textContent =
+        `${DATA.meta.source} · ${DATA.meta.generated} · Valid ${DATA.meta.valid_through} · Weekdays`;
+      render();
+      setInterval(render, 1000);
+      updateClock();
+      setInterval(updateClock, 1000);
+    }
+
+    function updateClock() {
+      document.getElementById('clock').textContent =
+        new Date().toLocaleTimeString('en-US',{hour:'numeric',minute:'2-digit',second:'2-digit',hour12:true});
+    }
+
+    function setDir(dir) {
+      currentDir = dir;
+      document.querySelectorAll('.dir-tab').forEach(b => b.classList.toggle('active', b.dataset.dir === dir));
+      render();
+    }
+
+    function nowMin() { const n=new Date(); return n.getHours()*60+n.getMinutes()+n.getSeconds()/60; }
+    function timeToMin(hhmm) { const [h,m]=hhmm.split(':').map(Number); return h*60+m; }
+    function formatTime12(hhmm) {
+      let [h,m]=hhmm.split(':').map(Number); if(h>=24)h-=24;
+      const ap=h<12?'AM':'PM'; if(h===0)h=12; else if(h>12)h-=12;
+      return `${h}:${String(m).padStart(2,'0')} ${ap}`;
+    }
+    function fmtEta(m) {
+      m = Math.round(m);
+      if(m<=0) return 'gone';
+      if(m<60) return `${m}m`;
+      const h=Math.floor(m/60), r=m%60;
+      return r ? `${h}h${r}m` : `${h}h`;
+    }
+    function eCls(m) { m=Math.round(m); if(m<=0)return'gone'; if(m<=5)return'imm'; if(m<=15)return'soon'; return'norm'; }
+
+    function cleanName(n) {
+      return n.replace('PORT AUTHORITY BUS TERMINAL','Port Authority Bus Terminal')
+        .replace('PORT AUTHORITY DROP OFF','Port Authority Drop Off')
+        .replace(/, T\. JEFFERSON SCHOOL/g,'').replace(/, HOLY NAME HOSPITAL/g,'')
+        .replace(/#$/g,'');
+    }
+
+    // Get next N upcoming trips for a given variant
+    function getUpcoming(variant, n) {
+      const now = nowMin();
+      const isTo = currentDir === 'to_ny';
+      const kf = isTo ? 'at_my_stop' : 'departs_pabt';
+      return DATA[currentDir]
+        .filter(t => t.variant === variant)
+        .map(t => ({...t, keyMin: timeToMin(t[kf]), diff: timeToMin(t[kf]) - now}))
+        .filter(t => t.diff > 0)
+        .slice(0, n);
+    }
+
+    // Build ETA badges for a stop using ACTUAL GTFS stop_times for given trips
+    function etaBadgesReal(tripList, stopId, variantCls) {
+      const now = nowMin();
+      const vc = variantCls || '';
+      return tripList.map(t => {
+        const st = STOPTIMES[t.trip_id];
+        if (!st || !(stopId in st)) return '';
+        const arrMin = st[stopId];
+        const eta = arrMin - now;
+        return `<span class="eb ${eCls(eta)} ${vc}">${fmtEta(eta)}</span>`;
+      }).join('');
+    }
+
+    function stopRow(stop, opts) {
+      const {lnCls, dtCls, isMy, isTerm, myLabel, etas} = opts;
+      const rc = isMy ? 'my-stop' : isTerm ? 'terminal' : '';
+      const dc = isMy ? 'my' : isTerm ? 'term' : dtCls;
+      const lb = isMy ? `<span class="sl">${myLabel||''}</span>` : '';
+      const skip = stop.name.includes('DROP OFF');
+      if (skip) return '';
+      return `<div class="stop-row ${rc}">
+        <div class="gutter"><div class="ln ${lnCls}"></div><div class="dt ${dc}"></div><div class="ln ${lnCls}"></div></div>
+        <div class="si"><span class="sn">${cleanName(stop.name)}${lb}</span><div class="etas">${etas||''}</div></div>
+      </div>`;
+    }
+
+    function renderFromNY() {
+      const tUp = getUpcoming('167T', 3);
+      const qUp = getUpcoming('167Q', 3);
+      const allUp = [...tUp,...qUp].sort((a,b) => a.keyMin - b.keyMin);
+
+      renderHero(allUp[0], false);
+
+      const tRoute = ROUTES[TREE.tBranch.routeKey];
+      const qRoute = ROUTES[TREE.qBranch.routeKey];
+      let html = '';
+
+      // === SHARED PREFIX ===
+      html += `<div class="section-hdr">From Port Authority</div>`;
+      for (const sid of TREE.prefix) {
+        const s = tRoute.find(r => r.stop_id === sid) || {stop_id:sid, name: sid==='3511'?'PORT AUTHORITY BUS TERMINAL':'31ST ST AT JFK BLVD'};
+        const isTerm = PABT_IDS.has(sid);
+        // Use whichever next-3 buses arrive soonest at this stop, labeled by variant
+        const etas = allUp.slice(0,3).map(t => {
+          const st = STOPTIMES[t.trip_id];
+          if (!st || !(sid in st)) return '';
+          const eta = st[sid] - nowMin();
+          const vc = t.variant === '167Q' ? 'vq' : 'vt';
+          const vl = t.variant === '167Q' ? 'Q' : 'T';
+          return `<span class="vbadge ${vc}">${vl}</span><span class="eb ${eCls(eta)} ${vc}">${fmtEta(eta)}</span>`;
+        }).join('');
+        html += stopRow(s, {lnCls:'sh', dtCls:'sh', isMy:false, isTerm, etas});
+      }
+
+      // === EXPRESS GAP ===
+      html += `<div class="express-gap"><div class="gutter"><div class="gl"></div></div><div class="glb">━ I-95 Express ━</div></div>`;
+
+      // === FORK ===
+      html += `<div class="fork-row"><div class="fork-label">Route splits after I-95</div></div>`;
+
+      // === BRANCHES ===
+      const tStops = tRoute.slice(TREE.tBranch.start, TREE.tBranch.end);
+      const qStops = qRoute.slice(TREE.qBranch.start, TREE.qBranch.end);
+
+      html += `<div class="branch-container">`;
+
+      // 167T column
+      html += `<div class="branch-col t-branch">`;
+      html += `<div class="branch-hdr">167T Express<br><span style="font-weight:400;font-size:0.5rem;color:#94a3b8">Teaneck Rd</span></div>`;
+      for (const s of tStops) {
+        const isMy = s.stop_id === TREE.tBranch.myStopId;
+        html += stopRow(s, {
+          lnCls:'tl', dtCls:'tl', isMy, isTerm:false,
+          myLabel: TREE.tBranch.myLabel,
+          etas: etaBadgesReal(tUp, s.stop_id, 'vt'),
+        });
+      }
+      html += `</div>`;
+
+      html += `<div class="branch-divider"></div>`;
+
+      // 167Q column
+      html += `<div class="branch-col q-branch">`;
+      html += `<div class="branch-hdr">167Q Queen Anne<br><span style="font-weight:400;font-size:0.5rem;color:#94a3b8">Degraw & Queen Anne Rd</span></div>`;
+      for (const s of qStops) {
+        const isMy = s.stop_id === TREE.qBranch.myStopId;
+        html += stopRow(s, {
+          lnCls:'ql', dtCls:'ql', isMy, isTerm:false,
+          myLabel: TREE.qBranch.myLabel,
+          etas: etaBadgesReal(qUp, s.stop_id, 'vq'),
+        });
+      }
+      html += `</div>`;
+      html += `</div>`; // end branch-container
+
+      // === MERGE ===
+      html += `<div class="fork-row"><div class="fork-label">Routes merge @ State St</div></div>`;
+
+      // === SHARED TAIL ===
+      html += `<div class="section-hdr">Teaneck Rd North (shared)</div>`;
+      const tailStops = tRoute.slice(TREE.tail.start, TREE.tail.end);
+      for (const s of tailStops) {
+        // Combine: use the soonest 3 buses from either variant, labeled
+        const etas = allUp.slice(0,3).map(t => {
+          const st = STOPTIMES[t.trip_id];
+          if (!st || !(s.stop_id in st)) return '';
+          const eta = st[s.stop_id] - nowMin();
+          const vc = t.variant === '167Q' ? 'vq' : 'vt';
+          const vl = t.variant === '167Q' ? 'Q' : 'T';
+          return `<span class="vbadge ${vc}">${vl}</span><span class="eb ${eCls(eta)} ${vc}">${fmtEta(eta)}</span>`;
+        }).join('');
+        html += stopRow(s, {lnCls:'sh', dtCls:'sh', isMy:false, isTerm:false, etas});
+      }
+
+      document.getElementById('routeTree').innerHTML = html;
+    }
+
+    function renderToNY() {
+      const tUp = getUpcoming('167T', 3);
+      const qExpUp = getUpcoming('167Q-EXP', 3);
+      const qRpUp = getUpcoming('167Q-RP', 3);
+      const qUp = [...qExpUp, ...qRpUp].sort((a,b) => a.keyMin - b.keyMin).slice(0, 3);
+      const allUp = [...tUp, ...qUp].sort((a,b) => a.keyMin - b.keyMin);
+
+      renderHero(allUp[0], true);
+
+      const tRoute = ROUTES[TO_NY_TREE.tBranch.routeKey];
+      const qRoute = ROUTES[TO_NY_TREE.qBranch.routeKey];
+      let html = '';
+
+      // === SHARED PREFIX: Teaneck Rd North ===
+      html += `<div class="section-hdr">Teaneck Rd North (shared)</div>`;
+      const prefixStops = tRoute.slice(TO_NY_TREE.sharedPrefix.start, TO_NY_TREE.sharedPrefix.end);
+      for (const s of prefixStops) {
+        const etas = allUp.slice(0,3).map(t => {
+          const st = STOPTIMES[t.trip_id];
+          if (!st || !(s.stop_id in st)) return '';
+          const eta = st[s.stop_id] - nowMin();
+          const vc = t.variant === '167T' ? 'vt' : 'vq';
+          const vl = t.variant === '167T' ? 'T' : 'Q';
+          return `<span class="vbadge ${vc}">${vl}</span><span class="eb ${eCls(eta)} ${vc}">${fmtEta(eta)}</span>`;
+        }).join('');
+        html += stopRow(s, {lnCls:'sh', dtCls:'sh', isMy:false, isTerm:false, etas});
+      }
+
+      // === FORK ===
+      html += `<div class="fork-row"><div class="fork-label">Route splits @ State St</div></div>`;
+
+      // === BRANCHES ===
+      const tStops = tRoute.slice(TO_NY_TREE.tBranch.start, TO_NY_TREE.tBranch.end);
+      const qStops = qRoute.slice(TO_NY_TREE.qBranch.start, TO_NY_TREE.qBranch.end);
+
+      html += `<div class="branch-container">`;
+
+      // 167T column
+      html += `<div class="branch-col t-branch">`;
+      html += `<div class="branch-hdr">167T Express<br><span style="font-weight:400;font-size:0.5rem;color:#94a3b8">Teaneck Rd South</span></div>`;
+      for (const s of tStops) {
+        const isMy = s.stop_id === TO_NY_TREE.tBranch.myStopId;
+        html += stopRow(s, {
+          lnCls:'tl', dtCls:'tl', isMy, isTerm:false,
+          myLabel: TO_NY_TREE.tBranch.myLabel,
+          etas: etaBadgesReal(tUp, s.stop_id, 'vt'),
+        });
+      }
+      html += `</div>`;
+
+      html += `<div class="branch-divider"></div>`;
+
+      // 167Q column
+      html += `<div class="branch-col q-branch">`;
+      html += `<div class="branch-hdr">167Q Queen Anne<br><span style="font-weight:400;font-size:0.5rem;color:#94a3b8">Queen Anne Rd → Degraw</span></div>`;
+      for (const s of qStops) {
+        const isMy = s.stop_id === TO_NY_TREE.qBranch.myStopId;
+        html += stopRow(s, {
+          lnCls:'ql', dtCls:'ql', isMy, isTerm:false,
+          myLabel: TO_NY_TREE.qBranch.myLabel,
+          etas: etaBadgesReal(qUp, s.stop_id, 'vq'),
+        });
+      }
+      html += `</div>`;
+      html += `</div>`; // end branch-container
+
+      // === MERGE ===
+      html += `<div class="fork-row"><div class="fork-label">Routes merge → I-95 Express</div></div>`;
+
+      // === EXPRESS GAP ===
+      html += `<div class="express-gap"><div class="gutter"><div class="gl"></div></div><div class="glb">━ I-95 Express ━</div></div>`;
+
+      // === PABT ===
+      html += `<div class="section-hdr">Arriving</div>`;
+      for (const sid of TO_NY_TREE.sharedSuffix) {
+        const s = {stop_id: sid, name: 'PORT AUTHORITY BUS TERMINAL'};
+        const etas = allUp.slice(0,3).map(t => {
+          const st = STOPTIMES[t.trip_id];
+          if (!st || !(sid in st)) return '';
+          const eta = st[sid] - nowMin();
+          const vc = t.variant === '167T' ? 'vt' : 'vq';
+          const vl = t.variant === '167T' ? 'T' : 'Q';
+          return `<span class="vbadge ${vc}">${vl}</span><span class="eb ${eCls(eta)} ${vc}">${fmtEta(eta)}</span>`;
+        }).join('');
+        html += stopRow(s, {lnCls:'sh', dtCls:'sh', isMy:false, isTerm:true, etas});
+      }
+
+      document.getElementById('routeTree').innerHTML = html;
+    }
+
+    function renderHero(next, isToNY) {
+      const el = document.getElementById('hero');
+      if (next) {
+        const d = Math.round(next.diff);
+        const vCls = next.variant === '167Q' ? 'variant-q' : 'variant-t';
+        const vBadgeCls = next.variant === '167Q' ? 'vq' : 'vt';
+        const cls = d<=3?'now':d<=10?'soon':vCls;
+        const vTag = `<span class="hero-variant ${vBadgeCls}">${next.variant}</span>`;
+        const det = isToNY
+          ? `${vTag}<br><strong>${next.variant}</strong> @ your stop ${formatTime12(next.at_my_stop)} → PABT ${formatTime12(next.arrives_pabt)} · ${next.travel_time_min}m ride`
+          : `${vTag}<br><strong>${next.variant}</strong> departs PABT ${formatTime12(next.departs_pabt)} → your stop ${formatTime12(next.at_my_stop)} · ${next.travel_time_min}m ride`;
+        el.innerHTML = `<div class="hero-inner"><div class="hero-countdown ${cls}">${fmtEta(next.diff)}</div><div class="hero-detail">${det}</div></div>`;
+      } else {
+        const t = DATA[currentDir][0];
+        const tm = formatTime12(isToNY ? t.at_my_stop : t.departs_pabt);
+        el.innerHTML = `<div class="hero-inner"><div class="hero-countdown" style="font-size:1.1rem;color:#475569">No more today</div><div class="hero-detail">First bus tomorrow <strong>${tm}</strong></div></div>`;
+      }
+    }
+
+    function updateLegend() {
+      const el = document.getElementById('legend');
+      if (currentDir === 'from_ny') {
+        el.innerHTML = `
+          <span><span class="sw" style="background:#475569"></span> Shared</span>
+          <span><span class="sw" style="background:#3b82f6"></span> 167T</span>
+          <span><span class="sw" style="background:#10b981"></span> 167Q</span>`;
+      } else {
+        el.innerHTML = `
+          <span><span class="sw" style="background:#475569"></span> Shared</span>
+          <span><span class="sw" style="background:#3b82f6"></span> 167T</span>
+          <span><span class="sw" style="background:#10b981"></span> 167Q-EXP / Q-RP</span>`;
+      }
+    }
+
+    function render() {
+      if (!DATA||!ROUTES||!STOPTIMES) return;
+      updateLegend();
+      if (currentDir==='from_ny') renderFromNY(); else renderToNY();
+    }
+
+    init();
+  </script>
+
+  <!-- Live Reload: polls server for file changes -->
+  <script>
+    (function(){
+      let knownTs = 0;
+      async function poll() {
+        try {
+          const r = await fetch('/api/livereload');
+          const d = await r.json();
+          if (knownTs && d.ts !== knownTs) location.reload();
+          knownTs = d.ts;
+        } catch(e) {}
+        setTimeout(poll, 1000);
+      }
+      poll();
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,1435 @@
+{
+  "to_ny_167t": [
+    {
+      "stop_id": "402",
+      "name": "TEANECK RD AT LIBERTY RD",
+      "lat": 40.911787,
+      "lon": -73.997883,
+      "seq": 1
+    },
+    {
+      "stop_id": "31144",
+      "name": "TEANECK RD AT ARMORY PL",
+      "lat": 40.910428,
+      "lon": -73.998192,
+      "seq": 2
+    },
+    {
+      "stop_id": "404",
+      "name": "TEANECK RD AT ELMER PL",
+      "lat": 40.909039,
+      "lon": -73.998552,
+      "seq": 3
+    },
+    {
+      "stop_id": "405",
+      "name": "TEANECK RD AT SACKVILLE ST",
+      "lat": 40.90725,
+      "lon": -73.998862,
+      "seq": 4
+    },
+    {
+      "stop_id": "406",
+      "name": "TEANECK RD AT BILTON ST",
+      "lat": 40.906299,
+      "lon": -73.998821,
+      "seq": 5
+    },
+    {
+      "stop_id": "407",
+      "name": "TEANECK RD AT TRYON AVE",
+      "lat": 40.903917,
+      "lon": -73.998792,
+      "seq": 6
+    },
+    {
+      "stop_id": "408",
+      "name": "TEANECK RD AT AMSTERDAM AVE",
+      "lat": 40.902939,
+      "lon": -73.999001,
+      "seq": 7
+    },
+    {
+      "stop_id": "409",
+      "name": "TEANECK RD AT STATE ST",
+      "lat": 40.900308,
+      "lon": -73.999762,
+      "seq": 8
+    },
+    {
+      "stop_id": "410",
+      "name": "TEANECK RD AT WEST ENGLEWOOD AVE",
+      "lat": 40.898579,
+      "lon": -74.00026,
+      "seq": 9
+    },
+    {
+      "stop_id": "411",
+      "name": "TEANECK RD AT BOGERT ST",
+      "lat": 40.897417,
+      "lon": -74.000602,
+      "seq": 10
+    },
+    {
+      "stop_id": "412",
+      "name": "TEANECK RD AT GENESEE AVE",
+      "lat": 40.896069,
+      "lon": -74.00103,
+      "seq": 11
+    },
+    {
+      "stop_id": "413",
+      "name": "TEANECK RD AT FOREST AVE",
+      "lat": 40.894088,
+      "lon": -74.001851,
+      "seq": 12
+    },
+    {
+      "stop_id": "414",
+      "name": "TEANECK RD AT SELVAGE AVE",
+      "lat": 40.892359,
+      "lon": -74.00273,
+      "seq": 13
+    },
+    {
+      "stop_id": "416",
+      "name": "TEANECK RD AT GRAYSON PL",
+      "lat": 40.888038,
+      "lon": -74.005431,
+      "seq": 14
+    },
+    {
+      "stop_id": "417",
+      "name": "TEANECK RD AT GOLF CT",
+      "lat": 40.884938,
+      "lon": -74.006571,
+      "seq": 15
+    },
+    {
+      "stop_id": "418",
+      "name": "TEANECK RD AT LINDBERGH BLVD, HOLY NAME HOSPITAL",
+      "lat": 40.88256,
+      "lon": -74.008651,
+      "seq": 16
+    },
+    {
+      "stop_id": "419",
+      "name": "TEANECK RD AT JOHNSON AVE, T. JEFFERSON SCHOOL",
+      "lat": 40.88051,
+      "lon": -74.009853,
+      "seq": 17
+    },
+    {
+      "stop_id": "420",
+      "name": "TEANECK RD AT PARKER LN",
+      "lat": 40.878729,
+      "lon": -74.010823,
+      "seq": 18
+    },
+    {
+      "stop_id": "40072",
+      "name": "TEANECK RD AT VAN BUREN AVE",
+      "lat": 40.87794,
+      "lon": -74.011153,
+      "seq": 19
+    },
+    {
+      "stop_id": "421",
+      "name": "TEANECK RD AT COPLEY AVE",
+      "lat": 40.876378,
+      "lon": -74.011761,
+      "seq": 20
+    },
+    {
+      "stop_id": "422",
+      "name": "TEANECK RD AT OAKDENE AVE",
+      "lat": 40.874649,
+      "lon": -74.01232,
+      "seq": 21
+    },
+    {
+      "stop_id": "423",
+      "name": "TEANECK RD AT FENIMORE RD",
+      "lat": 40.873489,
+      "lon": -74.01268,
+      "seq": 22
+    },
+    {
+      "stop_id": "337",
+      "name": "DEGRAW AVE AT FRANK W. BURR BLVD",
+      "lat": 40.871549,
+      "lon": -74.007183,
+      "seq": 23
+    },
+    {
+      "stop_id": "43310",
+      "name": "PORT AUTHORITY DROP OFF",
+      "lat": 40.756707,
+      "lon": -73.992134,
+      "seq": 24
+    },
+    {
+      "stop_id": "43274",
+      "name": "PORT AUTHORITY BUS TERMINAL",
+      "lat": 40.756209,
+      "lon": -73.991001,
+      "seq": 25
+    }
+  ],
+  "to_ny_167q_exp": [
+    {
+      "stop_id": "459",
+      "name": "STATE ST AT TEANECK RD",
+      "lat": 40.901298,
+      "lon": -74.00027,
+      "seq": 1
+    },
+    {
+      "stop_id": "460",
+      "name": "STATE ST AT TERRACE CIRCLE",
+      "lat": 40.902328,
+      "lon": -74.002421,
+      "seq": 2
+    },
+    {
+      "stop_id": "38630",
+      "name": "QUEEN ANNE RD AT WEST ENGLEWOOD AVE",
+      "lat": 40.900958,
+      "lon": -74.00547,
+      "seq": 3
+    },
+    {
+      "stop_id": "444",
+      "name": "QUEEN ANNE RD AT BOGERT ST",
+      "lat": 40.899618,
+      "lon": -74.006562,
+      "seq": 4
+    },
+    {
+      "stop_id": "445",
+      "name": "QUEEN ANNE RD AT PINEWOOD PL",
+      "lat": 40.898009,
+      "lon": -74.007461,
+      "seq": 5
+    },
+    {
+      "stop_id": "446",
+      "name": "QUEEN ANNE RD AT FOREST AVE",
+      "lat": 40.896379,
+      "lon": -74.008291,
+      "seq": 6
+    },
+    {
+      "stop_id": "447",
+      "name": "QUEEN ANNE RD AT SELVAGE AVE",
+      "lat": 40.89479,
+      "lon": -74.00961,
+      "seq": 7
+    },
+    {
+      "stop_id": "448",
+      "name": "QUEEN ANNE RD AT GRAYSON PL",
+      "lat": 40.891257,
+      "lon": -74.012583,
+      "seq": 8
+    },
+    {
+      "stop_id": "449",
+      "name": "QUEEN ANNE RD AT CHERRY LN",
+      "lat": 40.888969,
+      "lon": -74.013741,
+      "seq": 9
+    },
+    {
+      "stop_id": "450",
+      "name": "QUEEN ANNE RD AT CEDAR LANE",
+      "lat": 40.886418,
+      "lon": -74.015033,
+      "seq": 10
+    },
+    {
+      "stop_id": "451",
+      "name": "QUEEN ANNE RD AT VANDELINDA AVE",
+      "lat": 40.88367,
+      "lon": -74.016502,
+      "seq": 11
+    },
+    {
+      "stop_id": "452",
+      "name": "QUEEN ANNE RD AT SHERMAN AVE",
+      "lat": 40.882108,
+      "lon": -74.017341,
+      "seq": 12
+    },
+    {
+      "stop_id": "453",
+      "name": "QUEEN ANNE RD AT HERRICK AVE",
+      "lat": 40.880058,
+      "lon": -74.018413,
+      "seq": 13
+    },
+    {
+      "stop_id": "454",
+      "name": "QUEEN ANNE RD AT OAKDENE AVE",
+      "lat": 40.87783,
+      "lon": -74.019602,
+      "seq": 14
+    },
+    {
+      "stop_id": "334",
+      "name": "DEGRAW AVE AT BEECH ST",
+      "lat": 40.87438,
+      "lon": -74.018601,
+      "seq": 15
+    },
+    {
+      "stop_id": "335",
+      "name": "DEGRAW AVE AT MORNINGSIDE TER",
+      "lat": 40.873489,
+      "lon": -74.01626,
+      "seq": 16
+    },
+    {
+      "stop_id": "336",
+      "name": "DEGRAW AVE AT GIFFORD PL",
+      "lat": 40.872678,
+      "lon": -74.014122,
+      "seq": 17
+    },
+    {
+      "stop_id": "337",
+      "name": "DEGRAW AVE AT FRANK W. BURR BLVD",
+      "lat": 40.871549,
+      "lon": -74.007183,
+      "seq": 18
+    },
+    {
+      "stop_id": "38643",
+      "name": "FRANK W BURR BLVD AT TOWNHOUSES",
+      "lat": 40.874369,
+      "lon": -74.006352,
+      "seq": 19
+    },
+    {
+      "stop_id": "38642",
+      "name": "FRANK W. BURR BLVD 590'N OF GLENWOOD AVE.",
+      "lat": 40.872519,
+      "lon": -74.004633,
+      "seq": 20
+    },
+    {
+      "stop_id": "43310",
+      "name": "PORT AUTHORITY DROP OFF",
+      "lat": 40.756707,
+      "lon": -73.992134,
+      "seq": 21
+    },
+    {
+      "stop_id": "43274",
+      "name": "PORT AUTHORITY BUS TERMINAL",
+      "lat": 40.756209,
+      "lon": -73.991001,
+      "seq": 22
+    }
+  ],
+  "to_ny_167q_rp": [
+    {
+      "stop_id": "402",
+      "name": "TEANECK RD AT LIBERTY RD",
+      "lat": 40.911787,
+      "lon": -73.997883,
+      "seq": 1
+    },
+    {
+      "stop_id": "31144",
+      "name": "TEANECK RD AT ARMORY PL",
+      "lat": 40.910428,
+      "lon": -73.998192,
+      "seq": 2
+    },
+    {
+      "stop_id": "404",
+      "name": "TEANECK RD AT ELMER PL",
+      "lat": 40.909039,
+      "lon": -73.998552,
+      "seq": 3
+    },
+    {
+      "stop_id": "405",
+      "name": "TEANECK RD AT SACKVILLE ST",
+      "lat": 40.90725,
+      "lon": -73.998862,
+      "seq": 4
+    },
+    {
+      "stop_id": "406",
+      "name": "TEANECK RD AT BILTON ST",
+      "lat": 40.906299,
+      "lon": -73.998821,
+      "seq": 5
+    },
+    {
+      "stop_id": "407",
+      "name": "TEANECK RD AT TRYON AVE",
+      "lat": 40.903917,
+      "lon": -73.998792,
+      "seq": 6
+    },
+    {
+      "stop_id": "408",
+      "name": "TEANECK RD AT AMSTERDAM AVE",
+      "lat": 40.902939,
+      "lon": -73.999001,
+      "seq": 7
+    },
+    {
+      "stop_id": "459",
+      "name": "STATE ST AT TEANECK RD",
+      "lat": 40.901298,
+      "lon": -74.00027,
+      "seq": 8
+    },
+    {
+      "stop_id": "460",
+      "name": "STATE ST AT TERRACE CIRCLE",
+      "lat": 40.902328,
+      "lon": -74.002421,
+      "seq": 9
+    },
+    {
+      "stop_id": "38630",
+      "name": "QUEEN ANNE RD AT WEST ENGLEWOOD AVE",
+      "lat": 40.900958,
+      "lon": -74.00547,
+      "seq": 10
+    },
+    {
+      "stop_id": "444",
+      "name": "QUEEN ANNE RD AT BOGERT ST",
+      "lat": 40.899618,
+      "lon": -74.006562,
+      "seq": 11
+    },
+    {
+      "stop_id": "445",
+      "name": "QUEEN ANNE RD AT PINEWOOD PL",
+      "lat": 40.898009,
+      "lon": -74.007461,
+      "seq": 12
+    },
+    {
+      "stop_id": "446",
+      "name": "QUEEN ANNE RD AT FOREST AVE",
+      "lat": 40.896379,
+      "lon": -74.008291,
+      "seq": 13
+    },
+    {
+      "stop_id": "447",
+      "name": "QUEEN ANNE RD AT SELVAGE AVE",
+      "lat": 40.89479,
+      "lon": -74.00961,
+      "seq": 14
+    },
+    {
+      "stop_id": "448",
+      "name": "QUEEN ANNE RD AT GRAYSON PL",
+      "lat": 40.891257,
+      "lon": -74.012583,
+      "seq": 15
+    },
+    {
+      "stop_id": "449",
+      "name": "QUEEN ANNE RD AT CHERRY LN",
+      "lat": 40.888969,
+      "lon": -74.013741,
+      "seq": 16
+    },
+    {
+      "stop_id": "450",
+      "name": "QUEEN ANNE RD AT CEDAR LANE",
+      "lat": 40.886418,
+      "lon": -74.015033,
+      "seq": 17
+    },
+    {
+      "stop_id": "451",
+      "name": "QUEEN ANNE RD AT VANDELINDA AVE",
+      "lat": 40.88367,
+      "lon": -74.016502,
+      "seq": 18
+    },
+    {
+      "stop_id": "452",
+      "name": "QUEEN ANNE RD AT SHERMAN AVE",
+      "lat": 40.882108,
+      "lon": -74.017341,
+      "seq": 19
+    },
+    {
+      "stop_id": "453",
+      "name": "QUEEN ANNE RD AT HERRICK AVE",
+      "lat": 40.880058,
+      "lon": -74.018413,
+      "seq": 20
+    },
+    {
+      "stop_id": "454",
+      "name": "QUEEN ANNE RD AT OAKDENE AVE",
+      "lat": 40.87783,
+      "lon": -74.019602,
+      "seq": 21
+    },
+    {
+      "stop_id": "334",
+      "name": "DEGRAW AVE AT BEECH ST",
+      "lat": 40.87438,
+      "lon": -74.018601,
+      "seq": 22
+    },
+    {
+      "stop_id": "335",
+      "name": "DEGRAW AVE AT MORNINGSIDE TER",
+      "lat": 40.873489,
+      "lon": -74.01626,
+      "seq": 23
+    },
+    {
+      "stop_id": "336",
+      "name": "DEGRAW AVE AT GIFFORD PL",
+      "lat": 40.872678,
+      "lon": -74.014122,
+      "seq": 24
+    },
+    {
+      "stop_id": "38629",
+      "name": "TEANECK RD AT FORT LEE RD",
+      "lat": 40.870579,
+      "lon": -74.013962,
+      "seq": 25
+    },
+    {
+      "stop_id": "424",
+      "name": "TEANECK RD AT EAST WALNUT ST",
+      "lat": 40.868949,
+      "lon": -74.014622,
+      "seq": 26
+    },
+    {
+      "stop_id": "425",
+      "name": "TEANECK RD AT MAPLE ST",
+      "lat": 40.867398,
+      "lon": -74.015052,
+      "seq": 27
+    },
+    {
+      "stop_id": "426",
+      "name": "TEANECK RD AT JASPER AVE",
+      "lat": 40.866028,
+      "lon": -74.015443,
+      "seq": 28
+    },
+    {
+      "stop_id": "41340",
+      "name": "TEANECK RD AT GORDON ST#",
+      "lat": 40.862778,
+      "lon": -74.016353,
+      "seq": 29
+    },
+    {
+      "stop_id": "41341",
+      "name": "TEANECK RD AT HIGHLAND PL#",
+      "lat": 40.861539,
+      "lon": -74.016753,
+      "seq": 30
+    },
+    {
+      "stop_id": "41342",
+      "name": "TEANECK RD AT UNION PL#",
+      "lat": 40.859928,
+      "lon": -74.017271,
+      "seq": 31
+    },
+    {
+      "stop_id": "18376",
+      "name": "TEANECK RD AT POPLAR ST#",
+      "lat": 40.85761,
+      "lon": -74.01803,
+      "seq": 32
+    },
+    {
+      "stop_id": "18425",
+      "name": "TEANECK RD AT MT VERNON ST#",
+      "lat": 40.855198,
+      "lon": -74.01891,
+      "seq": 33
+    },
+    {
+      "stop_id": "18426",
+      "name": "TEANECK RD AT CEDAR ST#",
+      "lat": 40.853979,
+      "lon": -74.019473,
+      "seq": 34
+    },
+    {
+      "stop_id": "18427",
+      "name": "TEANECK RD AT HOBART ST#",
+      "lat": 40.852778,
+      "lon": -74.020033,
+      "seq": 35
+    },
+    {
+      "stop_id": "18428",
+      "name": "TEANECK RD AT BRINKERHOFF ST#",
+      "lat": 40.85114,
+      "lon": -74.020761,
+      "seq": 36
+    },
+    {
+      "stop_id": "18429",
+      "name": "TEANECK RD AT EAST WINANT AVE#",
+      "lat": 40.849268,
+      "lon": -74.021641,
+      "seq": 37
+    },
+    {
+      "stop_id": "38734",
+      "name": "CHALLENGER RD 301' N OF EMERSON ST.",
+      "lat": 40.849117,
+      "lon": -74.013112,
+      "seq": 38
+    },
+    {
+      "stop_id": "38735",
+      "name": "OVERPECK CORP CENTRE/AGFA BLDG",
+      "lat": 40.851997,
+      "lon": -74.012501,
+      "seq": 39
+    },
+    {
+      "stop_id": "38736",
+      "name": "CHALLENGER RD 659' N OF EMERSON ST.",
+      "lat": 40.84997,
+      "lon": -74.013183,
+      "seq": 40
+    },
+    {
+      "stop_id": "38737",
+      "name": "CHALLENGER RD 346'N OF EMERSON ST",
+      "lat": 40.848959,
+      "lon": -74.013313,
+      "seq": 41
+    },
+    {
+      "stop_id": "43310",
+      "name": "PORT AUTHORITY DROP OFF",
+      "lat": 40.756707,
+      "lon": -73.992134,
+      "seq": 42
+    },
+    {
+      "stop_id": "43274",
+      "name": "PORT AUTHORITY BUS TERMINAL",
+      "lat": 40.756209,
+      "lon": -73.991001,
+      "seq": 43
+    }
+  ],
+  "from_ny_167t": [
+    {
+      "stop_id": "3511",
+      "name": "PORT AUTHORITY BUS TERMINAL",
+      "lat": 40.756367,
+      "lon": -73.990753,
+      "seq": 1
+    },
+    {
+      "stop_id": "3177",
+      "name": "31ST ST AT JFK BLVD",
+      "lat": 40.773779,
+      "lon": -74.033991,
+      "seq": 2
+    },
+    {
+      "stop_id": "338",
+      "name": "DEGRAW AVE AT FRANK W. BURR BLVD",
+      "lat": 40.871659,
+      "lon": -74.006693,
+      "seq": 3
+    },
+    {
+      "stop_id": "379",
+      "name": "TEANECK RD AT PUFFIN WAY",
+      "lat": 40.874728,
+      "lon": -74.012171,
+      "seq": 4
+    },
+    {
+      "stop_id": "380",
+      "name": "TEANECK RD AT DEMAREST RD",
+      "lat": 40.877789,
+      "lon": -74.011122,
+      "seq": 5
+    },
+    {
+      "stop_id": "381",
+      "name": "TEANECK RD AT JOHNSON AVE, T. JEFFERSON SCHOOL",
+      "lat": 40.88062,
+      "lon": -74.009652,
+      "seq": 6
+    },
+    {
+      "stop_id": "382",
+      "name": "TEANECK RD AT LINDBERGH BLVD, HOLY NAME HOSPITAL",
+      "lat": 40.882239,
+      "lon": -74.00867,
+      "seq": 7
+    },
+    {
+      "stop_id": "383",
+      "name": "TEANECK RD AT GOLF CT/CEDAR LN",
+      "lat": 40.884749,
+      "lon": -74.006563,
+      "seq": 8
+    },
+    {
+      "stop_id": "384",
+      "name": "TEANECK RD AT HOLLAND TER",
+      "lat": 40.88601,
+      "lon": -74.006213,
+      "seq": 9
+    },
+    {
+      "stop_id": "385",
+      "name": "TEANECK RD AT MONTEREY AVE",
+      "lat": 40.887199,
+      "lon": -74.005762,
+      "seq": 10
+    },
+    {
+      "stop_id": "386",
+      "name": "TEANECK RD AT GRAYSON PL",
+      "lat": 40.888328,
+      "lon": -74.00501,
+      "seq": 11
+    },
+    {
+      "stop_id": "388",
+      "name": "TEANECK RD AT ROBINSON ST",
+      "lat": 40.892458,
+      "lon": -74.002511,
+      "seq": 12
+    },
+    {
+      "stop_id": "389",
+      "name": "TEANECK RD AT FOREST AVE",
+      "lat": 40.89365,
+      "lon": -74.001912,
+      "seq": 13
+    },
+    {
+      "stop_id": "390",
+      "name": "TEANECK RD AT CIRCLE DRIVEWAY",
+      "lat": 40.895439,
+      "lon": -74.001093,
+      "seq": 14
+    },
+    {
+      "stop_id": "391",
+      "name": "TEANECK RD AT FRANKLIN RD",
+      "lat": 40.897617,
+      "lon": -74.000411,
+      "seq": 15
+    },
+    {
+      "stop_id": "392",
+      "name": "TEANECK RD AT WEST ENGLEWOOD AVE",
+      "lat": 40.899218,
+      "lon": -73.999904,
+      "seq": 16
+    },
+    {
+      "stop_id": "393",
+      "name": "TEANECK RD AT WESTERVELT PL",
+      "lat": 40.900508,
+      "lon": -73.999542,
+      "seq": 17
+    },
+    {
+      "stop_id": "394",
+      "name": "TEANECK RD AT STATE ST",
+      "lat": 40.901637,
+      "lon": -73.999222,
+      "seq": 18
+    },
+    {
+      "stop_id": "395",
+      "name": "TEANECK RD AT AMSTERDAM AVE",
+      "lat": 40.902728,
+      "lon": -73.998902,
+      "seq": 19
+    },
+    {
+      "stop_id": "396",
+      "name": "TEANECK RD AT TRYON AVE",
+      "lat": 40.904049,
+      "lon": -73.998641,
+      "seq": 20
+    },
+    {
+      "stop_id": "397",
+      "name": "TEANECK RD AT VAN BUSKIRK RD",
+      "lat": 40.905457,
+      "lon": -73.998702,
+      "seq": 21
+    },
+    {
+      "stop_id": "398",
+      "name": "TEANECK RD AT VOORHEES ST",
+      "lat": 40.906849,
+      "lon": -73.998752,
+      "seq": 22
+    },
+    {
+      "stop_id": "399",
+      "name": "TEANECK RD AT VAN ARSDALE PL",
+      "lat": 40.909168,
+      "lon": -73.998423,
+      "seq": 23
+    },
+    {
+      "stop_id": "400",
+      "name": "TEANECK RD AT WARD PLAZA",
+      "lat": 40.910308,
+      "lon": -73.998132,
+      "seq": 24
+    },
+    {
+      "stop_id": "401",
+      "name": "TEANECK RD AT LIBERTY RD",
+      "lat": 40.911949,
+      "lon": -73.997711,
+      "seq": 25
+    }
+  ],
+  "from_ny_167t_full": [
+    {
+      "stop_id": "3511",
+      "name": "PORT AUTHORITY BUS TERMINAL",
+      "lat": 40.756367,
+      "lon": -73.990753,
+      "seq": 1
+    },
+    {
+      "stop_id": "3177",
+      "name": "31ST ST AT JFK BLVD",
+      "lat": 40.773779,
+      "lon": -74.033991,
+      "seq": 2
+    },
+    {
+      "stop_id": "427",
+      "name": "FRANK W. BURR BLVD 140'N OF GLENWOOD AVE",
+      "lat": 40.871878,
+      "lon": -74.00408,
+      "seq": 3
+    },
+    {
+      "stop_id": "428",
+      "name": "FRANK W BURR BLVD AT TOWNHOUSES",
+      "lat": 40.87452,
+      "lon": -74.005813,
+      "seq": 4
+    },
+    {
+      "stop_id": "379",
+      "name": "TEANECK RD AT PUFFIN WAY",
+      "lat": 40.874728,
+      "lon": -74.012171,
+      "seq": 5
+    },
+    {
+      "stop_id": "380",
+      "name": "TEANECK RD AT DEMAREST RD",
+      "lat": 40.877789,
+      "lon": -74.011122,
+      "seq": 6
+    },
+    {
+      "stop_id": "381",
+      "name": "TEANECK RD AT JOHNSON AVE, T. JEFFERSON SCHOOL",
+      "lat": 40.88062,
+      "lon": -74.009652,
+      "seq": 7
+    },
+    {
+      "stop_id": "382",
+      "name": "TEANECK RD AT LINDBERGH BLVD, HOLY NAME HOSPITAL",
+      "lat": 40.882239,
+      "lon": -74.00867,
+      "seq": 8
+    },
+    {
+      "stop_id": "383",
+      "name": "TEANECK RD AT GOLF CT/CEDAR LN",
+      "lat": 40.884749,
+      "lon": -74.006563,
+      "seq": 9
+    },
+    {
+      "stop_id": "384",
+      "name": "TEANECK RD AT HOLLAND TER",
+      "lat": 40.88601,
+      "lon": -74.006213,
+      "seq": 10
+    },
+    {
+      "stop_id": "385",
+      "name": "TEANECK RD AT MONTEREY AVE",
+      "lat": 40.887199,
+      "lon": -74.005762,
+      "seq": 11
+    },
+    {
+      "stop_id": "386",
+      "name": "TEANECK RD AT GRAYSON PL",
+      "lat": 40.888328,
+      "lon": -74.00501,
+      "seq": 12
+    },
+    {
+      "stop_id": "388",
+      "name": "TEANECK RD AT ROBINSON ST",
+      "lat": 40.892458,
+      "lon": -74.002511,
+      "seq": 13
+    },
+    {
+      "stop_id": "389",
+      "name": "TEANECK RD AT FOREST AVE",
+      "lat": 40.89365,
+      "lon": -74.001912,
+      "seq": 14
+    },
+    {
+      "stop_id": "390",
+      "name": "TEANECK RD AT CIRCLE DRIVEWAY",
+      "lat": 40.895439,
+      "lon": -74.001093,
+      "seq": 15
+    },
+    {
+      "stop_id": "391",
+      "name": "TEANECK RD AT FRANKLIN RD",
+      "lat": 40.897617,
+      "lon": -74.000411,
+      "seq": 16
+    },
+    {
+      "stop_id": "392",
+      "name": "TEANECK RD AT WEST ENGLEWOOD AVE",
+      "lat": 40.899218,
+      "lon": -73.999904,
+      "seq": 17
+    },
+    {
+      "stop_id": "393",
+      "name": "TEANECK RD AT WESTERVELT PL",
+      "lat": 40.900508,
+      "lon": -73.999542,
+      "seq": 18
+    },
+    {
+      "stop_id": "394",
+      "name": "TEANECK RD AT STATE ST",
+      "lat": 40.901637,
+      "lon": -73.999222,
+      "seq": 19
+    },
+    {
+      "stop_id": "395",
+      "name": "TEANECK RD AT AMSTERDAM AVE",
+      "lat": 40.902728,
+      "lon": -73.998902,
+      "seq": 20
+    },
+    {
+      "stop_id": "396",
+      "name": "TEANECK RD AT TRYON AVE",
+      "lat": 40.904049,
+      "lon": -73.998641,
+      "seq": 21
+    },
+    {
+      "stop_id": "397",
+      "name": "TEANECK RD AT VAN BUSKIRK RD",
+      "lat": 40.905457,
+      "lon": -73.998702,
+      "seq": 22
+    },
+    {
+      "stop_id": "398",
+      "name": "TEANECK RD AT VOORHEES ST",
+      "lat": 40.906849,
+      "lon": -73.998752,
+      "seq": 23
+    },
+    {
+      "stop_id": "399",
+      "name": "TEANECK RD AT VAN ARSDALE PL",
+      "lat": 40.909168,
+      "lon": -73.998423,
+      "seq": 24
+    },
+    {
+      "stop_id": "400",
+      "name": "TEANECK RD AT WARD PLAZA",
+      "lat": 40.910308,
+      "lon": -73.998132,
+      "seq": 25
+    },
+    {
+      "stop_id": "401",
+      "name": "TEANECK RD AT LIBERTY RD",
+      "lat": 40.911949,
+      "lon": -73.997711,
+      "seq": 26
+    },
+    {
+      "stop_id": "1387",
+      "name": "WASHINGTON AVE AT SYLVAN AVE",
+      "lat": 40.914459,
+      "lon": -73.997343,
+      "seq": 27
+    },
+    {
+      "stop_id": "1388",
+      "name": "WASHINGTON AVE AT ENGLEWOOD AVE",
+      "lat": 40.916029,
+      "lon": -73.997111,
+      "seq": 28
+    },
+    {
+      "stop_id": "1389",
+      "name": "WASHINGTON AVE AT MAGNOLIA ST",
+      "lat": 40.91857,
+      "lon": -73.996913,
+      "seq": 29
+    },
+    {
+      "stop_id": "1390",
+      "name": "WASHINGTON AVE AT EAST BROAD ST",
+      "lat": 40.92037,
+      "lon": -73.996751,
+      "seq": 30
+    },
+    {
+      "stop_id": "1391",
+      "name": "WASHINGTON AVE AT CLINTON AVE",
+      "lat": 40.922228,
+      "lon": -73.996823,
+      "seq": 31
+    },
+    {
+      "stop_id": "1392",
+      "name": "WASHINGTON AVE AT BERGEN AVE",
+      "lat": 40.925009,
+      "lon": -73.996782,
+      "seq": 32
+    },
+    {
+      "stop_id": "1393",
+      "name": "WASHINGTON AVE AT MAIN ST",
+      "lat": 40.92821,
+      "lon": -73.995882,
+      "seq": 33
+    },
+    {
+      "stop_id": "1394",
+      "name": "WASHINGTON AVE AT EAST CHURCH ST",
+      "lat": 40.929939,
+      "lon": -73.995554,
+      "seq": 34
+    },
+    {
+      "stop_id": "1395",
+      "name": "WASHINGTON AVE AT EAST JOHNSON AVE",
+      "lat": 40.930868,
+      "lon": -73.995581,
+      "seq": 35
+    },
+    {
+      "stop_id": "1396",
+      "name": "WASHINGTON AVE AT HICKORY AVE",
+      "lat": 40.932449,
+      "lon": -73.99553,
+      "seq": 36
+    },
+    {
+      "stop_id": "1397",
+      "name": "WASHINGTON AVE AT MERRITT AVE",
+      "lat": 40.934778,
+      "lon": -73.995103,
+      "seq": 37
+    },
+    {
+      "stop_id": "43181",
+      "name": "WASHINGTON AVE AT COLUMBIA AVE",
+      "lat": 40.936088,
+      "lon": -73.994802,
+      "seq": 38
+    },
+    {
+      "stop_id": "693",
+      "name": "WASHINGTON AVE AT E QUACKENBUSH AVE",
+      "lat": 40.9385,
+      "lon": -73.994221,
+      "seq": 39
+    },
+    {
+      "stop_id": "700",
+      "name": "WASHINGTON AVE AT MADISON AVE",
+      "lat": 40.940368,
+      "lon": -73.993742,
+      "seq": 40
+    },
+    {
+      "stop_id": "703",
+      "name": "WASHINGTON AVE AT NEW YORK AVE",
+      "lat": 40.94238,
+      "lon": -73.993083,
+      "seq": 41
+    },
+    {
+      "stop_id": "708",
+      "name": "WASHINGTON AVE AT VIRGINIA AVE",
+      "lat": 40.944309,
+      "lon": -73.99224,
+      "seq": 42
+    },
+    {
+      "stop_id": "692",
+      "name": "WASHINGTON AVE AT EAST LINDEN AVE",
+      "lat": 40.945739,
+      "lon": -73.991492,
+      "seq": 43
+    },
+    {
+      "stop_id": "690",
+      "name": "WASHINGTON AVE AT CRESSKILL AVE",
+      "lat": 40.94717,
+      "lon": -73.990641,
+      "seq": 44
+    },
+    {
+      "stop_id": "695",
+      "name": "WASHINGTON AVE AT GRANT AVE",
+      "lat": 40.948918,
+      "lon": -73.98848,
+      "seq": 45
+    },
+    {
+      "stop_id": "697",
+      "name": "WASHINGTON AVE AT LARCH AVE",
+      "lat": 40.95039,
+      "lon": -73.987212,
+      "seq": 46
+    },
+    {
+      "stop_id": "691",
+      "name": "WASHINGTON AVE AT DELONG AVE",
+      "lat": 40.952108,
+      "lon": -73.986223,
+      "seq": 47
+    },
+    {
+      "stop_id": "705",
+      "name": "WASHINGTON AVE AT MASSACHUSETTS AVE",
+      "lat": 40.954259,
+      "lon": -73.984553,
+      "seq": 48
+    },
+    {
+      "stop_id": "1455",
+      "name": "SCHRAALENBURGH RD AT HARDENBURG AVE",
+      "lat": 40.957988,
+      "lon": -73.983823,
+      "seq": 49
+    },
+    {
+      "stop_id": "1458",
+      "name": "SCHRAALENBURGH RD AT MADISON AVE",
+      "lat": 40.960348,
+      "lon": -73.983663,
+      "seq": 50
+    },
+    {
+      "stop_id": "1459",
+      "name": "SCHRAALENBURGH RD AT PROSPECT AVE",
+      "lat": 40.965368,
+      "lon": -73.98323,
+      "seq": 51
+    },
+    {
+      "stop_id": "1433",
+      "name": "SCHRAALENBURGH RD AT DURIE AVE",
+      "lat": 40.96841,
+      "lon": -73.982923,
+      "seq": 52
+    },
+    {
+      "stop_id": "1431",
+      "name": "SCHRAALENBURGH RD AT BERGENLINE AVE",
+      "lat": 40.972298,
+      "lon": -73.982401,
+      "seq": 53
+    },
+    {
+      "stop_id": "41407",
+      "name": "SCHRAALENBURGH RD AT HIGH ST",
+      "lat": 40.97497,
+      "lon": -73.98134,
+      "seq": 54
+    },
+    {
+      "stop_id": "41408",
+      "name": "SCHRAALENBURGH RD AT CEDAR LANE",
+      "lat": 40.976798,
+      "lon": -73.980542,
+      "seq": 55
+    },
+    {
+      "stop_id": "18444",
+      "name": "STATION PLAZA",
+      "lat": 40.984459,
+      "lon": -73.977843,
+      "seq": 56
+    }
+  ],
+  "from_ny_167q": [
+    {
+      "stop_id": "3511",
+      "name": "PORT AUTHORITY BUS TERMINAL",
+      "lat": 40.756367,
+      "lon": -73.990753,
+      "seq": 1
+    },
+    {
+      "stop_id": "3177",
+      "name": "31ST ST AT JFK BLVD",
+      "lat": 40.773779,
+      "lon": -74.033991,
+      "seq": 2
+    },
+    {
+      "stop_id": "427",
+      "name": "FRANK W. BURR BLVD 140'N OF GLENWOOD AVE",
+      "lat": 40.871878,
+      "lon": -74.00408,
+      "seq": 3
+    },
+    {
+      "stop_id": "428",
+      "name": "FRANK W BURR BLVD AT TOWNHOUSES",
+      "lat": 40.87452,
+      "lon": -74.005813,
+      "seq": 4
+    },
+    {
+      "stop_id": "339",
+      "name": "DEGRAW AVE AT GIFFORD PL",
+      "lat": 40.872689,
+      "lon": -74.013742,
+      "seq": 5
+    },
+    {
+      "stop_id": "340",
+      "name": "DEGRAW AVE AT ROCKLEDGE PL",
+      "lat": 40.873218,
+      "lon": -74.015133,
+      "seq": 6
+    },
+    {
+      "stop_id": "341",
+      "name": "DEGRAW AVE AT WOODBINE ST",
+      "lat": 40.873939,
+      "lon": -74.017063,
+      "seq": 7
+    },
+    {
+      "stop_id": "342",
+      "name": "DEGRAW AVE AT BEECH ST",
+      "lat": 40.874369,
+      "lon": -74.018242,
+      "seq": 8
+    },
+    {
+      "stop_id": "343",
+      "name": "DEGRAW AVE AT QUEEN ANNE RD",
+      "lat": 40.875199,
+      "lon": -74.020423,
+      "seq": 9
+    },
+    {
+      "stop_id": "432",
+      "name": "QUEEN ANNE RD AT QUEENS CT",
+      "lat": 40.877389,
+      "lon": -74.019833,
+      "seq": 10
+    },
+    {
+      "stop_id": "433",
+      "name": "QUEEN ANNE RD AT HERRICK AVE",
+      "lat": 40.880137,
+      "lon": -74.018372,
+      "seq": 11
+    },
+    {
+      "stop_id": "434",
+      "name": "QUEEN ANNE RD AT SHERMAN AVE",
+      "lat": 40.881839,
+      "lon": -74.017472,
+      "seq": 12
+    },
+    {
+      "stop_id": "435",
+      "name": "QUEEN ANNE RD AT VANDELINDA AVE",
+      "lat": 40.883459,
+      "lon": -74.016613,
+      "seq": 13
+    },
+    {
+      "stop_id": "436",
+      "name": "QUEEN ANNE RD AT CEDAR LANE",
+      "lat": 40.885958,
+      "lon": -74.015282,
+      "seq": 14
+    },
+    {
+      "stop_id": "437",
+      "name": "QUEEN ANNE RD AT MERRISON ST",
+      "lat": 40.888229,
+      "lon": -74.014132,
+      "seq": 15
+    },
+    {
+      "stop_id": "438",
+      "name": "QUEEN ANNE RD AT CARLTON TER",
+      "lat": 40.889717,
+      "lon": -74.013361,
+      "seq": 16
+    },
+    {
+      "stop_id": "439",
+      "name": "QUEEN ANNE RD AT GRAYSON PL",
+      "lat": 40.8914,
+      "lon": -74.012523,
+      "seq": 17
+    },
+    {
+      "stop_id": "440",
+      "name": "QUEEN ANNE RD AT SELVAGE AVE",
+      "lat": 40.894938,
+      "lon": -74.009471,
+      "seq": 18
+    },
+    {
+      "stop_id": "441",
+      "name": "QUEEN ANNE RD AT WEST FOREST AVE",
+      "lat": 40.89656,
+      "lon": -74.008184,
+      "seq": 19
+    },
+    {
+      "stop_id": "442",
+      "name": "QUEEN ANNE RD AT PINEWOOD PL",
+      "lat": 40.89787,
+      "lon": -74.007531,
+      "seq": 20
+    },
+    {
+      "stop_id": "443",
+      "name": "QUEEN ANNE RD AT BOGERT ST",
+      "lat": 40.899418,
+      "lon": -74.00668,
+      "seq": 21
+    },
+    {
+      "stop_id": "480",
+      "name": "QUEEN ANNE RD AT WEST ENGLEWOOD AVE",
+      "lat": 40.900818,
+      "lon": -74.005592,
+      "seq": 22
+    },
+    {
+      "stop_id": "38637",
+      "name": "QUEEN ANNE RD AT AYERS CT",
+      "lat": 40.901969,
+      "lon": -74.0048,
+      "seq": 23
+    },
+    {
+      "stop_id": "457",
+      "name": "STATE ST AT TERRACE CIRCLE",
+      "lat": 40.902249,
+      "lon": -74.002563,
+      "seq": 24
+    },
+    {
+      "stop_id": "394",
+      "name": "TEANECK RD AT STATE ST",
+      "lat": 40.901637,
+      "lon": -73.999222,
+      "seq": 25
+    },
+    {
+      "stop_id": "395",
+      "name": "TEANECK RD AT AMSTERDAM AVE",
+      "lat": 40.902728,
+      "lon": -73.998902,
+      "seq": 26
+    },
+    {
+      "stop_id": "396",
+      "name": "TEANECK RD AT TRYON AVE",
+      "lat": 40.904049,
+      "lon": -73.998641,
+      "seq": 27
+    },
+    {
+      "stop_id": "397",
+      "name": "TEANECK RD AT VAN BUSKIRK RD",
+      "lat": 40.905457,
+      "lon": -73.998702,
+      "seq": 28
+    },
+    {
+      "stop_id": "398",
+      "name": "TEANECK RD AT VOORHEES ST",
+      "lat": 40.906849,
+      "lon": -73.998752,
+      "seq": 29
+    },
+    {
+      "stop_id": "399",
+      "name": "TEANECK RD AT VAN ARSDALE PL",
+      "lat": 40.909168,
+      "lon": -73.998423,
+      "seq": 30
+    },
+    {
+      "stop_id": "400",
+      "name": "TEANECK RD AT WARD PLAZA",
+      "lat": 40.910308,
+      "lon": -73.998132,
+      "seq": 31
+    },
+    {
+      "stop_id": "401",
+      "name": "TEANECK RD AT LIBERTY RD",
+      "lat": 40.911949,
+      "lon": -73.997711,
+      "seq": 32
+    }
+  ]
+}
